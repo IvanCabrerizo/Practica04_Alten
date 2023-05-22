@@ -30,4 +30,39 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dp0</item>
     </style>
+
+    <style name="gamesFragmentListLabelTitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/gamesToolbarListTitle</item>
+        <item name="android:textSize">@dimen/sp42</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="gamesFragmentImgBtnToolbar">
+        <item name="android:layout_width">@dimen/dp36</item>
+        <item name="android:layout_height">@dimen/dp36</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_marginEnd">@dimen/dp6</item>
+
+    </style>
+
+    <style name="gamesFragmentImgBtnToolbarPlatform">
+        <item name="android:layout_width">@dimen/dp36</item>
+        <item name="android:layout_height">@dimen/dp36</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_marginEnd">@dimen/dp16</item>
+    </style>
+
+    <style name="emptySpace">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">@dimen/dp0</item>
+        <item name="android:layout_weight">@integer/int1</item>
+    </style>
+
+    <style name="gamesFragmentBottomNavigation">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>

@@ -4,5 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_text">Test text</string>
     <string name="splash_title">Juegos</string>
-    <string name="gamesToolbarListTitle">Juegos\n\n</string>
+    <string name="gamesToolbarListTitle">Juegos</string>
+    <string name="gamesFragmentBtnIdOrderDescription">Boton de ordenacion por numero de id</string>
+    <string name="gamesFragmentBtnAlphabetOrderDescription">Boton de ordenacion por orden alfabetico</string>
+    <string name="gamesFragmentBtnPlatformOrderDescrption">Boton de ordenacion por plataforma</string>
 </resources>
