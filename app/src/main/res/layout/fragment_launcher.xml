@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.LauncherFragment">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/fragmentLauncherLabelSplashTitle"
+        style="@style/LabelSplashTitle"
+        app:flow_horizontalBias="@dimen/halfBias"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="@dimen/bias0.2" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/fragmentLauncherImgSplashLogo"
+        style="@style/SplashLogo"
+        app:flow_horizontalBias="@dimen/halfBias"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragmentLauncherLabelSplashTitle"
+        app:layout_constraintVertical_bias="@dimen/bias0.05"
+        app:srcCompat="@drawable/allgamescategory" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

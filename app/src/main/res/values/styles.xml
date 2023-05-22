@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="navigationFragmentContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:name">androidx.navigation.fragment.NavHostFragment</item>
+    </style>
+
+    <style name="LabelSplashTitle">
+        <item name="android:text">@string/splash_title</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/sp46</item>
+        <item name="android:textColor">@color/cardview_dark_background</item>
+    </style>
+
+    <style name="SplashLogo">
+        <item name="android:layout_width">@dimen/dp48</item>
+        <item name="android:layout_height">@dimen/dp48</item>
+    </style>
+
+    <style name="gamesFragmentAppBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="gamesFragmentList">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp0</item>
     </style>
 </resources>
