@@ -48,7 +48,7 @@
                     android:id="@+id/gamesFragmentBtnPlatformOrder"
                     style="@style/gamesFragmentImgBtnToolbarPlatform"
                     android:background="@null"
-                    android:contentDescription="@string/gamesFragmentBtnPlatformOrderDescrption"
+                    android:contentDescription="@string/gamesFragmentBtnPlatformOrderDescription"
                     android:src="@drawable/platform_order_icon" />
 
             </LinearLayout>
@@ -64,15 +64,12 @@
         app:layout_constraintTop_toBottomOf="@id/gamesFragmentAppBarLayout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp16"
-        android:layout_marginBottom="@dimen/dp26"
-        android:src="@drawable/ic_launcher_foreground"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/gamesFragmentBtnAdd"
+        style="@style/gamesFragmentBtnAdd"
+        android:contentDescription="@string/gamesFragmentBtnAddDescription"
+        android:src="@drawable/add_floating_btn_icon"
         app:layout_constraintBottom_toTopOf="@id/gamesFragmentBottomNavigation"
-        android:contentDescription="TODO" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/gamesFragmentBottomNavigation"
@@ -80,6 +77,32 @@
         android:background="@color/md_theme_dark_inverseOnSurface"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/gamesFragmentBtnGamesList"
+                style="@style/gamesFragmentImgBtnBottomNavigation"
+                android:layout_marginStart="@dimen/dp26"
+                android:background="@null"
+                android:contentDescription="@string/gamesFragmentBtnAlphabetOrderDescription"
+                android:src="@drawable/games_list_navigation_icon" />
+
+
+            <ImageButton
+                android:id="@+id/gamesFragmentBtnUserPreferences"
+                style="@style/gamesFragmentImgBtnBottomNavigation"
+                android:layout_marginEnd="@dimen/dp26"
+                android:background="@null"
+                android:contentDescription="@string/gamesFragmentBtnPlatformOrderDescription"
+                android:src="@drawable/profile_preferences_icon" />
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

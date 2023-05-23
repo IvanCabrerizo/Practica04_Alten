@@ -7,5 +7,6 @@
     <string name="gamesToolbarListTitle">Juegos</string>
     <string name="gamesFragmentBtnIdOrderDescription">Boton de ordenacion por numero de id</string>
     <string name="gamesFragmentBtnAlphabetOrderDescription">Boton de ordenacion por orden alfabetico</string>
-    <string name="gamesFragmentBtnPlatformOrderDescrption">Boton de ordenacion por plataforma</string>
+    <string name="gamesFragmentBtnPlatformOrderDescription">Boton de ordenacion por plataforma</string>
+    <string name="gamesFragmentBtnAddDescription">Icono de agregar juego nuevo</string>
 </resources>

@@ -12,4 +12,7 @@
     <dimen name="dp36">36dp</dimen>
     <dimen name="sp42">42sp</dimen>
     <dimen name="dp26">26dp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp122">122dp</dimen>
 </resources>
