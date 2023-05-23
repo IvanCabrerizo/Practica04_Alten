@@ -41,14 +41,28 @@ class GamesFragment : Fragment() {
         }
 
         binding.gamesFragmentBtnIdOrder.setOnClickListener {
-            gamesFragmentViewModel.orderGamesId()
+            with(gamesFragmentViewModel) {
+                orderGamesId()
+                selectedOrderBtn(
+                    binding.gamesFragmentBtnIdOrder,
+                    binding.gamesFragmentBtnAlphabetOrder,
+                    requireContext()
+                )
+            }
         }
 
         binding.gamesFragmentBtnAlphabetOrder.setOnClickListener {
-            gamesFragmentViewModel.orderGamesName()
+            with(gamesFragmentViewModel) {
+                orderGamesName()
+                selectedOrderBtn(
+                    binding.gamesFragmentBtnIdOrder,
+                    binding.gamesFragmentBtnAlphabetOrder,
+                    requireContext()
+                )
+            }
         }
 
-        binding.gamesFragmentBtnPlatformOrder.setOnClickListener{
+        binding.gamesFragmentBtnPlatformOrder.setOnClickListener {
             gamesFragmentViewModel.filterGames()
         }
     }

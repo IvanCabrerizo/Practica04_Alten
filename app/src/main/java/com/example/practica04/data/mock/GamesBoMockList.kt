@@ -3,7 +3,7 @@ package com.example.practica04.data.mock
 import com.example.practica04.model.GameBo
 
 class GamesBoMockList {
-    val gameList = mutableListOf(
+    val gameList = listOf(
         GameBo(
             2,
             "Zelda Breath of the wild",
