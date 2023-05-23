@@ -27,9 +27,10 @@ class GamesListAdapter :
         RecyclerView.ViewHolder(gamesListBinding.root) {
         fun bind(item: GameBo) {
             with(gamesListBinding) {
-                Log.i("MANOLO", item.name)
                 gameListItemImgCover.imageUrl(item.cover)
                 gameListItemLabelTitle.text = item.name
+                gameListItemLabelStudio.text = item.studio
+                gameListItemLabelDate.text = item.launchDate.toString()
             }
         }
     }

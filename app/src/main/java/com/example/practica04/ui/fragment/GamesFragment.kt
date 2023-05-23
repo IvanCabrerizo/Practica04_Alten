@@ -14,7 +14,7 @@ import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 class GamesFragment : Fragment() {
 
     private val binding by lazy { FragmentGamesBinding.inflate(layoutInflater) }
-    private val viewModel: GamesFragmentViewModel by lazy {
+    private val gamesFragmentViewModel: GamesFragmentViewModel by lazy {
         GamesFragmentViewModel(GamesBoMockList())
     }
     private val gamesAdapter = GamesListAdapter()
@@ -34,10 +34,22 @@ class GamesFragment : Fragment() {
             adapter = gamesAdapter
         }
 
-        viewModel.getGames()
+        gamesFragmentViewModel.getGames()
 
-        viewModel.gamesList.observe(viewLifecycleOwner) { gameList ->
+        gamesFragmentViewModel.gamesList.observe(viewLifecycleOwner) { gameList ->
             gamesAdapter.submitList(gameList)
+        }
+
+        binding.gamesFragmentBtnIdOrder.setOnClickListener {
+            gamesFragmentViewModel.orderGamesId()
+        }
+
+        binding.gamesFragmentBtnAlphabetOrder.setOnClickListener {
+            gamesFragmentViewModel.orderGamesName()
+        }
+
+        binding.gamesFragmentBtnPlatformOrder.setOnClickListener{
+            gamesFragmentViewModel.filterGames()
         }
     }
 }
