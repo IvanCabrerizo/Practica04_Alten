@@ -15,4 +15,9 @@
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp1">1dp</dimen>
     <dimen name="dp122">122dp</dimen>
+    <dimen name="dp42">42dp</dimen>
+    <dimen name="sp32">32sp</dimen>
+    <dimen name="sp28">28sp</dimen>
+    <dimen name="dp2">2dp</dimen>
+    <dimen name="sp24">24sp</dimen>
 </resources>

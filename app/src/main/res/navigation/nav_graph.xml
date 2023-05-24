@@ -9,7 +9,7 @@
         android:id="@+id/launcherFragment"
         android:name="com.example.practica04.ui.fragment.LauncherFragment"
         android:label="fragment_launcher"
-        tools:layout="@layout/fragment_launcher" >
+        tools:layout="@layout/fragment_launcher">
         <action
             android:id="@+id/action_launcherFragment_to_gamesFragment"
             app:destination="@id/gamesFragment"
@@ -21,4 +21,8 @@
         android:name="com.example.practica04.ui.fragment.GamesFragment"
         android:label="fragment_games"
         tools:layout="@layout/fragment_games" />
+    <dialog
+        android:id="@+id/gamesFilterFragmentDialog2"
+        android:name="com.example.practica04.ui.fragment.GamesFilterFragmentDialog"
+        android:label="GamesFilterFragmentDialog" />
 </navigation>

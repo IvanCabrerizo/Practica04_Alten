@@ -42,7 +42,7 @@ class GamesFragment : Fragment() {
 
         binding.gamesFragmentBtnIdOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                orderGamesId()
+                sortGamesId()
                 selectedOrderBtn(
                     binding.gamesFragmentBtnIdOrder,
                     binding.gamesFragmentBtnAlphabetOrder,
@@ -53,7 +53,7 @@ class GamesFragment : Fragment() {
 
         binding.gamesFragmentBtnAlphabetOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                orderGamesName()
+                sortGamesName()
                 selectedOrderBtn(
                     binding.gamesFragmentBtnIdOrder,
                     binding.gamesFragmentBtnAlphabetOrder,

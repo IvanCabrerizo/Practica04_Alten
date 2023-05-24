@@ -11,29 +11,29 @@ import com.example.practica04.model.GameBo
 
 class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewModel() {
     val gamesList = MutableLiveData<List<GameBo>>()
-    var orderIdActivated = false
-    var orderAlphabet = false
+    var sortIdSelected = false
+    var sortAlphabetSelected = false
 
     fun getGames() {
         gamesList.postValue(repository.gameList)
     }
 
-    fun orderGamesId() {
+    fun sortGamesId() {
         val sortedListId = gamesList.value
         gamesList.postValue(sortedListId?.sortedBy { it.id })
-        orderIdActivated = true
-        orderAlphabet = false
+        sortIdSelected = true
+        sortAlphabetSelected = false
     }
 
-    fun orderGamesName() {
+    fun sortGamesName() {
         val sortedListName = gamesList.value
         gamesList.postValue(sortedListName?.sortedBy { it.name })
-        orderAlphabet = true
-        orderIdActivated = false
+        sortAlphabetSelected = true
+        sortIdSelected = false
     }
 
     fun selectedOrderBtn(iconId: ImageButton, iconAlphabet: ImageButton, context: Context) {
-        if (orderIdActivated) {
+        if (sortIdSelected) {
             iconId.background =
                 ContextCompat.getDrawable(context, R.drawable.circular_order_icon_background)
             iconAlphabet.background = null

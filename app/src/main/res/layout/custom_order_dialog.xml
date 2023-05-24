@@ -2,88 +2,188 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_dark_inverseOnSurface">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/orderDialogCardViewOptions"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="@dimen/dp16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="@dimen/dp0"
+        android:layout_height="@dimen/dp0"
+        app:layout_constraintBottom_toTopOf="@id/orderDialogBtnAccept"
+        app:layout_constraintEnd_toStartOf="@id/orderDialogGuideLineVerticalEnd"
+        app:layout_constraintStart_toEndOf="@id/orderDialogGuideLineVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/orderDialogGuideLineHorizontalTop">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/orderDialogLabelTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HOLA MANUEL"
+                android:text="@string/order_dialog_filter_title"
+                android:textSize="@dimen/sp28"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogDivider"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@id/orderDialogCardViewGuideLineVerticalStart"
+                app:layout_constraintTop_toBottomOf="@id/orderDialogCardViewGuideLineHorizontalTop" />
+
+            <ImageButton
+                android:id="@+id/orderDialogBtnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="@string/order_dialog_button_cancel_description"
+                android:src="@drawable/close_icon"
+                app:layout_constraintBottom_toTopOf="@id/orderDialogDivider"
+                app:layout_constraintEnd_toEndOf="@id/orderDialogCardViewGuideLineVerticalEnd"
+                app:layout_constraintTop_toBottomOf="@id/orderDialogCardViewGuideLineHorizontalTop" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/orderDialogDivider"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp1"
                 android:layout_marginStart="@dimen/dp16"
-                android:outlineAmbientShadowColor="@color/cardview_dark_background"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogBtnPlayStation"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
+                app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnPlayStation"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp0"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:contentDescription="TODO"
-                android:text="Hola"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/orderDialogDivider" />
+                android:layout_marginTop="@dimen/dp42"
+                android:background="@color/transparent"
+                android:contentDescription="@string/test_text"
+                android:drawableLeft="@drawable/playstation_logo"
+                android:text="@string/test_text"
+                android:textColor="@color/md_theme_dark_surfaceVariant"
+                android:textSize="@dimen/sp28"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
+                app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"
+                app:layout_constraintTop_toBottomOf="@id/orderDialogDivider" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnXbox"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp0"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:contentDescription="TODO"
-                android:text="Hola"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/transparent"
+                android:contentDescription="@string/test_text"
+                android:drawableLeft="@drawable/xbox_logo"
+                android:text="@string/test_text"
+                android:textColor="@color/md_theme_dark_surfaceVariant"
+                android:textSize="@dimen/sp28"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/orderDialogBtnNintendo"
+                app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
+                app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/orderDialogBtnPlayStation" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnNintendo"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp0"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:contentDescription="TODO"
-
-                android:text="Hola"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/transparent"
+                android:contentDescription="@string/test_text"
+                android:drawableLeft="@drawable/nintendo_logo"
+                android:text="@string/test_text"
+                android:textColor="@color/md_theme_dark_surfaceVariant"
+                android:textSize="@dimen/sp28"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/orderDialogBtnAllPlatform"
+                app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
+                app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/orderDialogBtnXbox" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnAllPlatform"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:contentDescription="@string/test_text"
+                android:drawableLeft="@drawable/all_platform_icon"
+                android:text="@string/test_text"
+                android:textColor="@color/md_theme_dark_surfaceVariant"
+                android:textSize="@dimen/sp28"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/orderDialogCardViewGuideLineHorizontalBottom"
+                app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
+                app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"
+                app:layout_constraintTop_toBottomOf="@id/orderDialogBtnNintendo" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/orderDialogCardViewGuideLineVerticalStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:contentDescription="TODO"
-                android:text="Hola"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/orderDialogBtnNintendo" />
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.08" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/orderDialogCardViewGuideLineHorizontalTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.04" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/orderDialogCardViewGuideLineVerticalEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.92" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/orderDialogCardViewGuideLineHorizontalBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.96" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/orderDialogBtnAccept"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp16"
+        android:backgroundTint="@color/green_accept"
+        android:text="@string/order_dialog_button_accept"
+        android:textSize="@dimen/sp24"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/dp2"
+        app:layout_constraintBottom_toBottomOf="@id/orderDialogGuideLineHorizontalBottom"
+        app:layout_constraintEnd_toStartOf="@id/orderDialogGuideLineVerticalEnd"
+        app:layout_constraintStart_toEndOf="@id/orderDialogGuideLineVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/orderDialogCardViewOptions" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/orderDialogGuideLineVerticalStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/orderDialogCardViewOptions" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/orderDialogGuideLineHorizontalTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/orderDialogGuideLineVerticalEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/orderDialogGuideLineHorizontalBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

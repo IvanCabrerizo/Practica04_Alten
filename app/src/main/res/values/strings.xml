@@ -9,4 +9,7 @@
     <string name="gamesFragmentBtnAlphabetOrderDescription">Boton de ordenacion por orden alfabetico</string>
     <string name="gamesFragmentBtnPlatformOrderDescription">Boton de ordenacion por plataforma</string>
     <string name="gamesFragmentBtnAddDescription">Icono de agregar juego nuevo</string>
+    <string name="order_dialog_filter_title">Filtrar</string>
+    <string name="order_dialog_button_cancel_description">Boton para cancelar el dialogo</string>
+    <string name="order_dialog_button_accept">Aceptar</string>
 </resources>
