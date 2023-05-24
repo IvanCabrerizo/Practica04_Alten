@@ -81,4 +81,9 @@
         <item name="android:layout_weight">@integer/int1</item>
     </style>
 
+    <style name="FullScreenDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

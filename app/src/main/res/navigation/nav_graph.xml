@@ -16,13 +16,20 @@
             app:popUpTo="@id/launcherFragment"
             app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/gamesFragment"
         android:name="com.example.practica04.ui.fragment.GamesFragment"
         android:label="fragment_games"
-        tools:layout="@layout/fragment_games" />
+        tools:layout="@layout/fragment_games">
+        <action
+            android:id="@+id/action_gamesFragment_to_gamesFilterDialog"
+            app:destination="@id/gamesFilterFragmentDialog" />
+    </fragment>
+
     <dialog
-        android:id="@+id/gamesFilterFragmentDialog2"
+        android:id="@+id/gamesFilterFragmentDialog"
         android:name="com.example.practica04.ui.fragment.GamesFilterFragmentDialog"
-        android:label="GamesFilterFragmentDialog" />
+        android:label="GamesFilterFragmentDialog"
+        tools:layout="@layout/custom_order_dialog"/>
 </navigation>

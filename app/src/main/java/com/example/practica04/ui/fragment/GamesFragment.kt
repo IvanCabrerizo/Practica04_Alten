@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.practica04.data.mock.GamesBoMockList
 import com.example.practica04.databinding.FragmentGamesBinding
@@ -18,6 +20,7 @@ class GamesFragment : Fragment() {
         GamesFragmentViewModel(GamesBoMockList())
     }
     private val gamesAdapter = GamesListAdapter()
+    private lateinit var gamesFragmentNavController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +31,8 @@ class GamesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        gamesFragmentNavController = findNavController()
 
         with(binding.gamesFragmentListGames) {
             layoutManager = LinearLayoutManager(requireContext())
@@ -63,7 +68,7 @@ class GamesFragment : Fragment() {
         }
 
         binding.gamesFragmentBtnPlatformOrder.setOnClickListener {
-            gamesFragmentViewModel.filterGames()
+            gamesFragmentViewModel.showDialog(gamesFragmentNavController)
         }
     }
 }

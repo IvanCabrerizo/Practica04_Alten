@@ -5,6 +5,7 @@ import android.widget.ImageButton
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import com.example.practica04.R
 import com.example.practica04.data.mock.GamesBoMockList
 import com.example.practica04.model.GameBo
@@ -49,5 +50,9 @@ class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewMode
         gamesList.postValue(filteredList?.filter { game ->
             "Nintendo" in game.compatiblePlatform
         })
+    }
+
+    fun showDialog(navController: NavController) {
+        navController.navigate(R.id.action_gamesFragment_to_gamesFilterDialog)
     }
 }
