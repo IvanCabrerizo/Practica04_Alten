@@ -1,6 +1,7 @@
 package com.example.practica04.ui.viewmodel
 
 import android.content.Context
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
@@ -14,6 +15,7 @@ class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewMode
     val gamesList = MutableLiveData<List<GameBo>>()
     var sortIdSelected = false
     var sortAlphabetSelected = false
+    val selectFilter = MutableLiveData<String>()
 
     fun getGames() {
         gamesList.postValue(repository.gameList)
@@ -45,11 +47,41 @@ class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewMode
         }
     }
 
-    fun filterGames() {
-        val filteredList = gamesList.value
-        gamesList.postValue(filteredList?.filter { game ->
+    fun filterGamesByNintendo() {
+        val filteredList = repository.gameList
+        gamesList.postValue(filteredList.filter { game ->
             "Nintendo" in game.compatiblePlatform
         })
+    }
+
+    fun filterGamesByPlayStation() {
+        val filteredList = repository.gameList
+        gamesList.postValue(filteredList.filter { game ->
+            "PlayStation" in game.compatiblePlatform
+        })
+    }
+
+    fun filterGamesByXbox() {
+        val filteredList = repository.gameList
+        gamesList.postValue(filteredList.filter { game ->
+            "Xbox" in game.compatiblePlatform
+        })
+    }
+
+    fun restoreGameList() {
+        getGames()
+    }
+
+    fun selectedFilter(context: Context, button: Button) {
+        selectFilter.value = when (button.text) {
+            "PlayStation" -> "PlayStation"
+            "Xbox" -> "Xbox"
+            "Nintendo" -> "Nintendo"
+            "Todas" -> "Todas"
+            else -> "Error"
+        }
+        button.background = ContextCompat.getDrawable(context, R.drawable.circular_order_icon_background)
+        button.backgroundTintList
     }
 
     fun showDialog(navController: NavController) {

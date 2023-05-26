@@ -12,4 +12,8 @@
     <string name="order_dialog_filter_title">Filtrar</string>
     <string name="order_dialog_button_cancel_description">Boton para cancelar el dialogo</string>
     <string name="order_dialog_button_accept">Aceptar</string>
+    <string name="order_dialog_label_button_playstation">PlayStation</string>
+    <string name="order_dialog_label_button_xbox">Xbox</string>
+    <string name="order_dialog_label_button_nintendo">Nintendo</string>
+    <string name="order_dialog_label_button_all_platform">Todas</string>
 </resources>

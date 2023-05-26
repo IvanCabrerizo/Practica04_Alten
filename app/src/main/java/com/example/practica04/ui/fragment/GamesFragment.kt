@@ -15,10 +15,12 @@ import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 
 class GamesFragment : Fragment() {
 
-    private val binding by lazy { FragmentGamesBinding.inflate(layoutInflater) }
-    private val gamesFragmentViewModel: GamesFragmentViewModel by lazy {
-        GamesFragmentViewModel(GamesBoMockList())
+    companion object{
+        val gamesFragmentViewModel: GamesFragmentViewModel by lazy {
+            GamesFragmentViewModel(GamesBoMockList())
+        }
     }
+    private val binding by lazy { FragmentGamesBinding.inflate(layoutInflater) }
     private val gamesAdapter = GamesListAdapter()
     private lateinit var gamesFragmentNavController: NavController
 
