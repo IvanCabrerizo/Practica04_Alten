@@ -4,7 +4,18 @@ enum class CompatiblePlatform(val platform: String) {
     ALL("Todas"),
     PLAYSTATION("PlayStation"),
     XBOX("Xbox"),
-    NINTENDO("Nintendo"),
+    NINTENDO("Nintendo");
+
+    companion object {
+        fun fromPlatform(platform: String): CompatiblePlatform {
+            return when (platform) {
+                PLAYSTATION.platform -> PLAYSTATION
+                XBOX.platform -> XBOX
+                NINTENDO.platform -> NINTENDO
+                else -> ALL
+            }
+        }
+    }
 }
 
 data class GameBo(

@@ -6,38 +6,44 @@ import android.widget.ImageButton
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.practica04.R
-import com.example.practica04.data.mock.GamesBoMockList
+import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
+import kotlinx.coroutines.launch
 
-class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewModel() {
+class GamesFragmentViewModel(private val repository: GamesRepository) : ViewModel() {
     val gamesList = MutableLiveData<List<GameBo>>()
-    var sortIdSelected = false
-    var sortAlphabetSelected = false
+    val sortIdSelected = MutableLiveData<Boolean>()
+    val sortAlphabetSelected = MutableLiveData<Boolean>()
     val selectFilter = MutableLiveData<CompatiblePlatform>()
 
     fun getGames() {
-        gamesList.postValue(repository.gameList)
+        viewModelScope.launch {
+            gamesList.postValue(repository.getGames())
+        }
     }
 
     fun sortGamesId() {
-        val sortedListId = gamesList.value
-        gamesList.postValue(sortedListId?.sortedBy { it.id })
-        sortIdSelected = true
-        sortAlphabetSelected = false
+        viewModelScope.launch {
+            gamesList.postValue(repository.getGamesSortedById())
+        }
+        sortIdSelected.value = true
+        sortAlphabetSelected.value = false
     }
 
     fun sortGamesName() {
-        val sortedListName = gamesList.value
-        gamesList.postValue(sortedListName?.sortedBy { it.name })
-        sortAlphabetSelected = true
-        sortIdSelected = false
+        viewModelScope.launch {
+            gamesList.postValue(repository.getGamesSortedByName())
+        }
+        sortAlphabetSelected.value = true
+        sortIdSelected.value = false
     }
 
     fun selectedOrderBtn(iconId: ImageButton, iconAlphabet: ImageButton, context: Context) {
-        if (sortIdSelected) {
+        if (sortIdSelected.value == true) {
             iconId.background =
                 ContextCompat.getDrawable(context, R.drawable.circular_order_icon_background)
             iconAlphabet.background = null
@@ -49,24 +55,21 @@ class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewMode
     }
 
     fun filterGamesByNintendo() {
-        val filteredList = repository.gameList
-        gamesList.postValue(filteredList.filter { game ->
-            CompatiblePlatform.NINTENDO in game.compatiblePlatform
-        })
+        viewModelScope.launch {
+            gamesList.postValue(repository.getGamesFiltered(CompatiblePlatform.NINTENDO))
+        }
     }
 
     fun filterGamesByPlayStation() {
-        val filteredList = repository.gameList
-        gamesList.postValue(filteredList.filter { game ->
-            CompatiblePlatform.PLAYSTATION in game.compatiblePlatform
-        })
+        viewModelScope.launch {
+            gamesList.postValue(repository.getGamesFiltered(CompatiblePlatform.PLAYSTATION))
+        }
     }
 
     fun filterGamesByXbox() {
-        val filteredList = repository.gameList
-        gamesList.postValue(filteredList.filter { game ->
-            CompatiblePlatform.XBOX in game.compatiblePlatform
-        })
+        viewModelScope.launch {
+            gamesList.postValue(repository.getGamesFiltered(CompatiblePlatform.XBOX))
+        }
     }
 
     fun restoreGameList() {
@@ -74,13 +77,7 @@ class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewMode
     }
 
     fun selectedFilter(context: Context, button: Button) {
-        selectFilter.value = when (button.text) {
-            CompatiblePlatform.PLAYSTATION.platform -> CompatiblePlatform.PLAYSTATION
-            CompatiblePlatform.XBOX.platform -> CompatiblePlatform.XBOX
-            CompatiblePlatform.NINTENDO.platform -> CompatiblePlatform.NINTENDO
-            else -> CompatiblePlatform.ALL
-        }
-
+        selectFilter.value = CompatiblePlatform.fromPlatform(button.text.toString())
         button.background = ContextCompat.getDrawable(context, R.drawable.selected_button_backgroun)
     }
 

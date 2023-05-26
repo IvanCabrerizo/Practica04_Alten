@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.practica04.data.mock.GamesBoMockList
+import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.databinding.FragmentGamesBinding
 import com.example.practica04.ui.adapter.GamesListAdapter
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
@@ -17,7 +18,7 @@ class GamesFragment : Fragment() {
 
     companion object{
         val gamesFragmentViewModel: GamesFragmentViewModel by lazy {
-            GamesFragmentViewModel(GamesBoMockList())
+            GamesFragmentViewModel(GamesRepository(GamesBoMockList()))
         }
     }
     private val binding by lazy { FragmentGamesBinding.inflate(layoutInflater) }
