@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/transparent">
+    android:background="@color/transparent"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/orderDialogCardViewOptions"
@@ -50,7 +50,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnPlayStation"
                 android:layout_width="@dimen/dp0"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp82"
                 android:layout_marginTop="@dimen/dp42"
                 android:background="@color/transparent"
                 android:contentDescription="@string/test_text"
@@ -59,7 +59,7 @@
                 android:textColor="@color/md_theme_dark_surfaceVariant"
                 android:textSize="@dimen/sp28"
                 android:textStyle="bold"
-                app:backgroundTint="@color/green_accept"
+                app:backgroundTint="@color/grey_background"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
                 app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/orderDialogDivider" />
@@ -67,7 +67,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnXbox"
                 android:layout_width="@dimen/dp0"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp82"
                 android:background="@color/transparent"
                 android:contentDescription="@string/test_text"
                 android:drawableLeft="@drawable/xbox_logo"
@@ -75,6 +75,7 @@
                 android:textColor="@color/md_theme_dark_surfaceVariant"
                 android:textSize="@dimen/sp28"
                 android:textStyle="bold"
+                app:backgroundTint="@color/grey_background"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogBtnNintendo"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
                 app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"
@@ -83,7 +84,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnNintendo"
                 android:layout_width="@dimen/dp0"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp82"
                 android:background="@color/transparent"
                 android:contentDescription="@string/test_text"
                 android:drawableLeft="@drawable/nintendo_logo"
@@ -91,6 +92,7 @@
                 android:textColor="@color/md_theme_dark_surfaceVariant"
                 android:textSize="@dimen/sp28"
                 android:textStyle="bold"
+                app:backgroundTint="@color/grey_background"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogBtnAllPlatform"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
                 app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"
@@ -99,7 +101,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnAllPlatform"
                 android:layout_width="@dimen/dp0"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp82"
                 android:background="@color/transparent"
                 android:contentDescription="@string/test_text"
                 android:drawableLeft="@drawable/all_platform_icon"
@@ -107,6 +109,7 @@
                 android:textColor="@color/md_theme_dark_surfaceVariant"
                 android:textSize="@dimen/sp28"
                 android:textStyle="bold"
+                app:backgroundTint="@color/grey_background"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogCardViewGuideLineHorizontalBottom"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
                 app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"

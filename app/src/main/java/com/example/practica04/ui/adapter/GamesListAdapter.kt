@@ -31,6 +31,10 @@ class GamesListAdapter :
                 gameListItemLabelTitle.text = item.name
                 gameListItemLabelStudio.text = item.studio
                 gameListItemLabelDate.text = item.launchDate.toString()
+                when(item.compatiblePlatform){
+
+
+                }
             }
         }
     }

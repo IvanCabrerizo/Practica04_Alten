@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.example.practica04.R
 import com.example.practica04.databinding.CustomOrderDialogBinding
+import com.example.practica04.model.CompatiblePlatform
 
 class GamesFilterFragmentDialog : DialogFragment() {
 
@@ -50,10 +51,11 @@ class GamesFilterFragmentDialog : DialogFragment() {
 
             orderDialogBtnAccept.setOnClickListener {
                 when (GamesFragment.gamesFragmentViewModel.selectFilter.value) {
-                    "PlayStation" -> GamesFragment.gamesFragmentViewModel.filterGamesByPlayStation()
-                    "Xbox" -> GamesFragment.gamesFragmentViewModel.filterGamesByXbox()
-                    "Nintendo" -> GamesFragment.gamesFragmentViewModel.filterGamesByNintendo()
-                    "Todas" -> GamesFragment.gamesFragmentViewModel.restoreGameList()
+                    CompatiblePlatform.PLAYSTATION -> GamesFragment.gamesFragmentViewModel.filterGamesByPlayStation()
+                    CompatiblePlatform.XBOX -> GamesFragment.gamesFragmentViewModel.filterGamesByXbox()
+                    CompatiblePlatform.NINTENDO -> GamesFragment.gamesFragmentViewModel.filterGamesByNintendo()
+                    CompatiblePlatform.ALL -> GamesFragment.gamesFragmentViewModel.restoreGameList()
+                    else -> GamesFragment.gamesFragmentViewModel.restoreGameList()
                 }
                 dismiss()
             }

@@ -9,13 +9,14 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.example.practica04.R
 import com.example.practica04.data.mock.GamesBoMockList
+import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 
 class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewModel() {
     val gamesList = MutableLiveData<List<GameBo>>()
     var sortIdSelected = false
     var sortAlphabetSelected = false
-    val selectFilter = MutableLiveData<String>()
+    val selectFilter = MutableLiveData<CompatiblePlatform>()
 
     fun getGames() {
         gamesList.postValue(repository.gameList)
@@ -50,21 +51,21 @@ class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewMode
     fun filterGamesByNintendo() {
         val filteredList = repository.gameList
         gamesList.postValue(filteredList.filter { game ->
-            "Nintendo" in game.compatiblePlatform
+            CompatiblePlatform.NINTENDO in game.compatiblePlatform
         })
     }
 
     fun filterGamesByPlayStation() {
         val filteredList = repository.gameList
         gamesList.postValue(filteredList.filter { game ->
-            "PlayStation" in game.compatiblePlatform
+            CompatiblePlatform.PLAYSTATION in game.compatiblePlatform
         })
     }
 
     fun filterGamesByXbox() {
         val filteredList = repository.gameList
         gamesList.postValue(filteredList.filter { game ->
-            "Xbox" in game.compatiblePlatform
+            CompatiblePlatform.XBOX in game.compatiblePlatform
         })
     }
 
@@ -74,14 +75,13 @@ class GamesFragmentViewModel(private val repository: GamesBoMockList) : ViewMode
 
     fun selectedFilter(context: Context, button: Button) {
         selectFilter.value = when (button.text) {
-            "PlayStation" -> "PlayStation"
-            "Xbox" -> "Xbox"
-            "Nintendo" -> "Nintendo"
-            "Todas" -> "Todas"
-            else -> "Error"
+            CompatiblePlatform.PLAYSTATION.platform -> CompatiblePlatform.PLAYSTATION
+            CompatiblePlatform.XBOX.platform -> CompatiblePlatform.XBOX
+            CompatiblePlatform.NINTENDO.platform -> CompatiblePlatform.NINTENDO
+            else -> CompatiblePlatform.ALL
         }
-        button.background = ContextCompat.getDrawable(context, R.drawable.circular_order_icon_background)
-        button.backgroundTintList
+
+        button.background = ContextCompat.getDrawable(context, R.drawable.selected_button_backgroun)
     }
 
     fun showDialog(navController: NavController) {

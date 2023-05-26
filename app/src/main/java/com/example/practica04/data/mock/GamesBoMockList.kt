@@ -1,5 +1,6 @@
 package com.example.practica04.data.mock
 
+import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 
 class GamesBoMockList {
@@ -9,7 +10,7 @@ class GamesBoMockList {
             "Zelda Breath of the wild",
             "Nintendo",
             2017,
-            listOf("Nintendo"),
+            listOf(CompatiblePlatform.NINTENDO),
             16,
             "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg"
         ),
@@ -18,7 +19,7 @@ class GamesBoMockList {
             "Pokemon amarillo",
             "GameFreak",
             1998,
-            listOf("Nintendo"),
+            listOf(CompatiblePlatform.NINTENDO),
             6,
             "https://static.wikia.nocookie.net/espokemon/images/9/95/Pok%C3%A9mon_Amarillo.png"
         ),
@@ -27,7 +28,7 @@ class GamesBoMockList {
             "Metal gear solid",
             "Konami",
             1998,
-            listOf("PlayStation"),
+            listOf(CompatiblePlatform.PLAYSTATION),
             18,
             "https://media.vandal.net/m/181/metal-gear-solid-201961220192328_1.jpg"
         ),
@@ -36,7 +37,7 @@ class GamesBoMockList {
             "Halo",
             "Bungie",
             2001,
-            listOf("Xbox"),
+            listOf(CompatiblePlatform.XBOX),
             18,
             "https://www.liveabout.com/thmb/F4q6V-rm8hOR_g7nOQC4_kDjog0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/halo-combat-evolved-game-57900ff03df78c09e9a2071e.jpg"
         ),
@@ -45,7 +46,7 @@ class GamesBoMockList {
             "GTA V",
             "RockStar",
             2013,
-            listOf("PlayStation", "Xbox"),
+            listOf(CompatiblePlatform.PLAYSTATION, CompatiblePlatform.XBOX),
             18,
             "https://image.api.playstation.com/cdn/EP1004/CUSA00411_00/eXsWlP0EkcVkLPHgU4pjflmg07252yU8.png"
         ),
@@ -54,7 +55,7 @@ class GamesBoMockList {
             "Call of duty 4",
             "Activision",
             2007,
-            listOf("PlayStation", "Xbox"),
+            listOf(CompatiblePlatform.PLAYSTATION, CompatiblePlatform.XBOX),
             18,
             "https://static.wikia.nocookie.net/cod_esports_gamepedia_en/images/a/a5/Call_of_Duty_4_Game_Cover.jpg"
         ),
@@ -63,7 +64,11 @@ class GamesBoMockList {
             "Crash Team Racing",
             "Nintendo",
             2019,
-            listOf("Nintendo", "PlayStation", "Xbox"),
+            listOf(
+                CompatiblePlatform.PLAYSTATION,
+                CompatiblePlatform.XBOX,
+                CompatiblePlatform.NINTENDO
+            ),
             8,
             "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_CrashTeamRacingNitroFueled_image1600w.jpg"
         ),
