@@ -51,10 +51,22 @@ class GamesFilterFragmentDialog : DialogFragment() {
 
             orderDialogBtnAccept.setOnClickListener {
                 when (GamesFragment.gamesFragmentViewModel.selectFilter.value) {
-                    CompatiblePlatform.PLAYSTATION -> GamesFragment.gamesFragmentViewModel.filterGamesByPlayStation()
-                    CompatiblePlatform.XBOX -> GamesFragment.gamesFragmentViewModel.filterGamesByXbox()
-                    CompatiblePlatform.NINTENDO -> GamesFragment.gamesFragmentViewModel.filterGamesByNintendo()
-                    CompatiblePlatform.ALL -> GamesFragment.gamesFragmentViewModel.restoreGameList()
+                    CompatiblePlatform.PLAYSTATION -> GamesFragment.gamesFragmentViewModel.filterGames(
+                        CompatiblePlatform.PLAYSTATION
+                    )
+
+                    CompatiblePlatform.XBOX -> GamesFragment.gamesFragmentViewModel.filterGames(
+                        CompatiblePlatform.XBOX
+                    )
+
+                    CompatiblePlatform.NINTENDO -> GamesFragment.gamesFragmentViewModel.filterGames(
+                        CompatiblePlatform.NINTENDO
+                    )
+
+                    CompatiblePlatform.ALL -> GamesFragment.gamesFragmentViewModel.filterGames(
+                        CompatiblePlatform.ALL
+                    )
+
                     else -> GamesFragment.gamesFragmentViewModel.restoreGameList()
                 }
                 dismiss()

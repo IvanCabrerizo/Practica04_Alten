@@ -16,9 +16,15 @@ import kotlinx.coroutines.launch
 
 class GamesFragmentViewModel(private val repository: GamesRepository) : ViewModel() {
     val gamesList = MutableLiveData<List<GameBo>>()
-    val sortIdSelected = MutableLiveData<Boolean>()
-    val sortAlphabetSelected = MutableLiveData<Boolean>()
-    val selectFilter = MutableLiveData<CompatiblePlatform>()
+    val selectFilter = MutableLiveData<CompatiblePlatform?>()
+    val sortSelected: MutableLiveData<SortType> = MutableLiveData<SortType>().apply {
+        value = SortType.NAME
+    }
+
+    enum class SortType(name: String) {
+        ID("ID"),
+        NAME("NAME"),
+    }
 
     fun getGames() {
         viewModelScope.launch {
@@ -26,24 +32,32 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
         }
     }
 
-    fun sortGamesId() {
+    fun sortGames(sort: String) {
         viewModelScope.launch {
-            gamesList.postValue(repository.getGamesSortedById())
-        }
-        sortIdSelected.value = true
-        sortAlphabetSelected.value = false
-    }
+            when (sort) {
+                "ID" -> {
+                    if (selectFilter.value == null) {
+                        gamesList.postValue(repository.getGamesSorted(SortType.ID))
+                    } else {
+                        filterGames(selectFilter.value)
+                    }
+                    sortSelected.value = SortType.ID
+                }
 
-    fun sortGamesName() {
-        viewModelScope.launch {
-            gamesList.postValue(repository.getGamesSortedByName())
+                "NAME" -> {
+                    if (selectFilter.value == null) {
+                        gamesList.postValue(repository.getGamesSorted(SortType.NAME))
+                    } else {
+                        filterGames(selectFilter.value)
+                    }
+                    sortSelected.value = SortType.NAME
+                }
+            }
         }
-        sortAlphabetSelected.value = true
-        sortIdSelected.value = false
     }
 
     fun selectedOrderBtn(iconId: ImageButton, iconAlphabet: ImageButton, context: Context) {
-        if (sortIdSelected.value == true) {
+        if (sortSelected.value == SortType.ID) {
             iconId.background =
                 ContextCompat.getDrawable(context, R.drawable.circular_order_icon_background)
             iconAlphabet.background = null
@@ -54,21 +68,51 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
         }
     }
 
-    fun filterGamesByNintendo() {
-        viewModelScope.launch {
-            gamesList.postValue(repository.getGamesFiltered(CompatiblePlatform.NINTENDO))
-        }
-    }
+    fun filterGames(filter: CompatiblePlatform?) {
+        when (filter) {
+            CompatiblePlatform.NINTENDO -> {
+                viewModelScope.launch {
+                    gamesList.postValue(
+                        repository.getGamesFiltered(CompatiblePlatform.NINTENDO, sortSelected.value)
+                    )
+                }
+            }
 
-    fun filterGamesByPlayStation() {
-        viewModelScope.launch {
-            gamesList.postValue(repository.getGamesFiltered(CompatiblePlatform.PLAYSTATION))
-        }
-    }
+            CompatiblePlatform.PLAYSTATION -> {
+                viewModelScope.launch {
+                    gamesList.postValue(
+                        repository.getGamesFiltered(
+                            CompatiblePlatform.PLAYSTATION,
+                            sortSelected.value
+                        )
+                    )
+                }
+            }
 
-    fun filterGamesByXbox() {
-        viewModelScope.launch {
-            gamesList.postValue(repository.getGamesFiltered(CompatiblePlatform.XBOX))
+            CompatiblePlatform.XBOX -> {
+                viewModelScope.launch {
+                    gamesList.postValue(
+                        repository.getGamesFiltered(CompatiblePlatform.XBOX, sortSelected.value)
+                    )
+                }
+            }
+
+            CompatiblePlatform.ALL -> {
+                viewModelScope.launch {
+                    gamesList.postValue(
+                        repository.getGames()
+                    )
+                }
+                selectFilter.value = null
+            }
+
+            else -> {
+                viewModelScope.launch {
+                    gamesList.postValue(
+                        repository.getGames()
+                    )
+                }
+            }
         }
     }
 

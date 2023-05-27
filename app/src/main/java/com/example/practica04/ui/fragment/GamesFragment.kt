@@ -16,11 +16,12 @@ import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 
 class GamesFragment : Fragment() {
 
-    companion object{
+    companion object {
         val gamesFragmentViewModel: GamesFragmentViewModel by lazy {
             GamesFragmentViewModel(GamesRepository(GamesBoMockList()))
         }
     }
+
     private val binding by lazy { FragmentGamesBinding.inflate(layoutInflater) }
     private val gamesAdapter = GamesListAdapter()
     private lateinit var gamesFragmentNavController: NavController
@@ -50,24 +51,26 @@ class GamesFragment : Fragment() {
 
         binding.gamesFragmentBtnIdOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                sortGamesId()
+                sortGames("ID")
                 selectedOrderBtn(
                     binding.gamesFragmentBtnIdOrder,
                     binding.gamesFragmentBtnAlphabetOrder,
                     requireContext()
                 )
             }
+            binding.gamesFragmentListGames.scrollToPosition(0)
         }
 
         binding.gamesFragmentBtnAlphabetOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                sortGamesName()
+                sortGames("NAME")
                 selectedOrderBtn(
                     binding.gamesFragmentBtnIdOrder,
                     binding.gamesFragmentBtnAlphabetOrder,
                     requireContext()
                 )
             }
+            binding.gamesFragmentListGames.scrollToPosition(0)
         }
 
         binding.gamesFragmentBtnPlatformOrder.setOnClickListener {
