@@ -67,7 +67,9 @@ class GamesFilterFragmentDialog : DialogFragment() {
                         CompatiblePlatform.ALL
                     )
 
-                    else -> GamesFragment.gamesFragmentViewModel.restoreGameList()
+                    else -> GamesFragment.gamesFragmentViewModel.filterGames(
+                        CompatiblePlatform.ALL
+                    )
                 }
                 dismiss()
             }

@@ -8,7 +8,7 @@ import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 class GamesRepository(private val gameBoMock: GamesBoMockList) {
 
     suspend fun getGames(): List<GameBo> {
-        return gameBoMock.gameList.sortedBy { it.name }
+        return gameBoMock.gameList.sortedBy { it.id }
     }
 
     suspend fun getGamesFiltered(

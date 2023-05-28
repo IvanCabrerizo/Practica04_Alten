@@ -19,8 +19,8 @@ import kotlinx.coroutines.launch
 class GamesFragmentViewModel(private val repository: GamesRepository) : ViewModel() {
     val gamesList = MutableLiveData<List<GameBo>>()
     val selectFilter = MutableLiveData<CompatiblePlatform?>()
-    val sortSelected: MutableLiveData<SortType> = MutableLiveData<SortType>().apply {
-        value = SortType.NAME
+    private val sortSelected: MutableLiveData<SortType> = MutableLiveData<SortType>().apply {
+        value = SortType.ID
     }
     val selectFilterButton = MutableLiveData<Button>()
 

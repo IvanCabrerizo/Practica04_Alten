@@ -33,14 +33,14 @@
                 <ImageButton
                     android:id="@+id/gamesFragmentBtnIdOrder"
                     style="@style/gamesFragmentImgBtnToolbar"
-                    android:background="@null"
+                    android:background="@drawable/circular_order_icon_background"
                     android:contentDescription="@string/gamesFragmentBtnIdOrderDescription"
                     android:src="@drawable/id_order_icon" />
 
                 <ImageButton
                     android:id="@+id/gamesFragmentBtnAlphabetOrder"
                     style="@style/gamesFragmentImgBtnToolbar"
-                    android:background="@drawable/circular_order_icon_background"
+                    android:background="@null"
                     android:contentDescription="@string/gamesFragmentBtnAlphabetOrderDescription"
                     android:src="@drawable/alphabet_order_icon" />
 
