@@ -51,26 +51,24 @@ class GamesFragment : Fragment() {
 
         binding.gamesFragmentBtnIdOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                sortGames("ID")
+                sortGames("ID", binding.gamesFragmentListGames)
                 selectedOrderBtn(
                     binding.gamesFragmentBtnIdOrder,
                     binding.gamesFragmentBtnAlphabetOrder,
                     requireContext()
                 )
             }
-            binding.gamesFragmentListGames.scrollToPosition(0)
         }
 
         binding.gamesFragmentBtnAlphabetOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                sortGames("NAME")
+                sortGames("NAME", binding.gamesFragmentListGames)
                 selectedOrderBtn(
                     binding.gamesFragmentBtnIdOrder,
                     binding.gamesFragmentBtnAlphabetOrder,
                     requireContext()
                 )
             }
-            binding.gamesFragmentListGames.scrollToPosition(0)
         }
 
         binding.gamesFragmentBtnPlatformOrder.setOnClickListener {

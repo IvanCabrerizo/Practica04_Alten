@@ -40,7 +40,7 @@
                 <ImageButton
                     android:id="@+id/gamesFragmentBtnAlphabetOrder"
                     style="@style/gamesFragmentImgBtnToolbar"
-                    android:background="@null"
+                    android:background="@drawable/circular_order_icon_background"
                     android:contentDescription="@string/gamesFragmentBtnAlphabetOrderDescription"
                     android:src="@drawable/alphabet_order_icon" />
 

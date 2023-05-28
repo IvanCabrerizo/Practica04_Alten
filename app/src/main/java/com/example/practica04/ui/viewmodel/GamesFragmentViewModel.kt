@@ -8,10 +8,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.practica04.R
 import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class GamesFragmentViewModel(private val repository: GamesRepository) : ViewModel() {
@@ -20,6 +22,7 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
     val sortSelected: MutableLiveData<SortType> = MutableLiveData<SortType>().apply {
         value = SortType.NAME
     }
+    val selectFilterButton = MutableLiveData<Button>()
 
     enum class SortType(name: String) {
         ID("ID"),
@@ -32,7 +35,7 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
         }
     }
 
-    fun sortGames(sort: String) {
+    fun sortGames(sort: String, recycler: RecyclerView) {
         viewModelScope.launch {
             when (sort) {
                 "ID" -> {
@@ -53,6 +56,8 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
                     sortSelected.value = SortType.NAME
                 }
             }
+            delay(100)
+            recycler.scrollToPosition(0)
         }
     }
 
@@ -122,7 +127,14 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
 
     fun selectedFilter(context: Context, button: Button) {
         selectFilter.value = CompatiblePlatform.fromPlatform(button.text.toString())
-        button.background = ContextCompat.getDrawable(context, R.drawable.selected_button_backgroun)
+        val previousButton = selectFilterButton.value
+        selectFilterButton.value = button
+
+        if (button != previousButton) {
+            button.background =
+                ContextCompat.getDrawable(button.context, R.drawable.selected_button_backgroun)
+            previousButton?.background = null
+        }
     }
 
     fun showDialog(navController: NavController) {
