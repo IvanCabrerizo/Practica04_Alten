@@ -1,13 +1,15 @@
 package com.example.practica04.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.practica04.R
 import com.example.practica04.databinding.GamesListItemBinding
 import com.example.practica04.imageUrl
+import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 
 class GamesListAdapter :
@@ -31,9 +33,21 @@ class GamesListAdapter :
                 gameListItemLabelTitle.text = item.name
                 gameListItemLabelStudio.text = item.studio
                 gameListItemLabelDate.text = item.launchDate.toString()
-                when(item.compatiblePlatform){
 
+                gameListItemImgPlayStation.isVisible =
+                    item.compatiblePlatform.contains(CompatiblePlatform.PLAYSTATION)
+                gameListItemImgXbox.isVisible =
+                    item.compatiblePlatform.contains(CompatiblePlatform.XBOX)
+                gameListItemImgNintendo.isVisible =
+                    item.compatiblePlatform.contains(CompatiblePlatform.NINTENDO)
 
+                when (item.pegi) {
+                    3 -> gameListItemImgPegi.setImageResource(R.drawable.pegi3)
+                    7 -> gameListItemImgPegi.setImageResource(R.drawable.pegi7)
+                    12 -> gameListItemImgPegi.setImageResource(R.drawable.pegi12)
+                    16 -> gameListItemImgPegi.setImageResource(R.drawable.pegi16)
+                    18 -> gameListItemImgPegi.setImageResource(R.drawable.pegi18)
+                    else -> gameListItemImgPegi.setImageDrawable(null)
                 }
             }
         }

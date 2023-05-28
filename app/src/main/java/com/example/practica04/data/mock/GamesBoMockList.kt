@@ -20,7 +20,7 @@ class GamesBoMockList {
             "GameFreak",
             1998,
             listOf(CompatiblePlatform.NINTENDO),
-            6,
+            7,
             "https://static.wikia.nocookie.net/espokemon/images/9/95/Pok%C3%A9mon_Amarillo.png"
         ),
         GameBo(
@@ -69,7 +69,7 @@ class GamesBoMockList {
                 CompatiblePlatform.XBOX,
                 CompatiblePlatform.NINTENDO
             ),
-            8,
+            7,
             "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_CrashTeamRacingNitroFueled_image1600w.jpg"
         ),
     )

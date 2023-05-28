@@ -86,4 +86,131 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="orderDialogCardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp0</item>
+    </style>
+
+    <style name="orderDialogLabelTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/order_dialog_filter_title</item>
+        <item name="android:textSize">@dimen/sp28</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="orderDialogBtnClose">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="orderDialogDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp1</item>
+        <item name="android:layout_marginStart">@dimen/dp16</item>
+    </style>
+
+    <style name="orderDialogBtnPlayStation">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">@dimen/dp82</item>
+        <item name="android:layout_marginTop">@dimen/dp42</item>
+        <item name="android:contentDescription">@string/test_text</item>
+        <item name="android:drawableLeft">@drawable/playstation_logo</item>
+        <item name="android:text">@string/order_dialog_label_button_playstation</item>
+        <item name="android:textColor">@color/md_theme_dark_surfaceVariant</item>
+        <item name="android:textSize">@dimen/sp28</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="orderDialogBtnNintendo">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">@dimen/dp82</item>
+        <item name="android:layout_marginTop">@dimen/dp42</item>
+        <item name="android:contentDescription">@string/test_text</item>
+        <item name="android:drawableLeft">@drawable/nintendo_logo</item>
+        <item name="android:text">@string/order_dialog_label_button_nintendo</item>
+        <item name="android:textColor">@color/md_theme_dark_surfaceVariant</item>
+        <item name="android:textSize">@dimen/sp28</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="orderDialogBtnXbox">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">@dimen/dp82</item>
+        <item name="android:layout_marginTop">@dimen/dp42</item>
+        <item name="android:contentDescription">@string/test_text</item>
+        <item name="android:drawableLeft">@drawable/xbox_logo</item>
+        <item name="android:text">@string/order_dialog_label_button_xbox</item>
+        <item name="android:textColor">@color/md_theme_dark_surfaceVariant</item>
+        <item name="android:textSize">@dimen/sp28</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="orderDialogBtnAllPlatform">
+        <item name="android:layout_width">@dimen/dp0</item>
+        <item name="android:layout_height">@dimen/dp82</item>
+        <item name="android:layout_marginTop">@dimen/dp42</item>
+        <item name="android:contentDescription">@string/test_text</item>
+        <item name="android:drawableLeft">@drawable/all_platform_icon</item>
+        <item name="android:text">@string/order_dialog_label_button_all_platform</item>
+        <item name="android:textColor">@color/md_theme_dark_surfaceVariant</item>
+        <item name="android:textSize">@dimen/sp28</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="GuideLineVerticalStart">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="GuideLineVerticalEnd">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="GuideLineVerticalTop">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="GuideLineVerticalBottom">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="orderDialogBtnAccept">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/dp16</item>
+        <item name="android:text">@string/order_dialog_button_accept</item>
+        <item name="android:textSize">@dimen/sp24</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="gameListItemImg">
+        <item name="android:layout_width">@dimen/dp42</item>
+        <item name="android:layout_height">@dimen/dp42</item>
+        <item name="android:layout_margin">@dimen/dp6</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="gameListItemLabels">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="gameListItemImgCover">
+        <item name="android:layout_width">@dimen/dp122</item>
+        <item name="android:layout_height">@dimen/dp122</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+
 </resources>

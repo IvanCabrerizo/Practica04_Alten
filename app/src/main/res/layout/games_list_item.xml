@@ -12,78 +12,58 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/gameListItemImgCover"
-            android:layout_width="@dimen/dp122"
-            android:layout_height="@dimen/dp122"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
+            style="@style/gameListItemImgCover"
+            android:src="@drawable/ic_launcher_background"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_launcher_background"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/gameListItemLabelTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/gameListItemLabels"
             app:layout_constraintStart_toEndOf="@id/gameListItemImgCover"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/test_text"
-            android:text="@string/test_text"/>
+            tools:text="@string/test_text" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/gameListItemLabelStudio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/gameListItemLabels"
             app:layout_constraintStart_toEndOf="@id/gameListItemImgCover"
             app:layout_constraintTop_toBottomOf="@id/gameListItemLabelTitle"
             tools:text="@string/test_text" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/gameListItemLabelDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/gameListItemLabels"
             app:layout_constraintStart_toEndOf="@id/gameListItemImgCover"
             app:layout_constraintTop_toBottomOf="@id/gameListItemLabelStudio"
             tools:text="@string/test_text" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/gameListItemImgPegi"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_margin="@dimen/dp6"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
+            style="@style/gameListItemImg"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/gameListItemImgPlayStation" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/gameListItemImgPlayStation"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_margin="@dimen/dp6"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
+            style="@style/gameListItemImg"
+            android:src="@drawable/playstation_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/gameListItemImgXbox" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/gameListItemImgXbox"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_margin="@dimen/dp6"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
+            style="@style/gameListItemImg"
+            android:src="@drawable/xbox_logo"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/gameListItemImgNintendo" />
+            app:layout_constraintEnd_toStartOf="@id/gameListItemImgPegi" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/gameListItemImgNintendo"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_margin="@dimen/dp6"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            style="@style/gameListItemImg"
+            android:src="@drawable/nintendo_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/gameListItemImgPlayStation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

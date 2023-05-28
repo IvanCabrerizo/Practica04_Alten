@@ -8,8 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/orderDialogCardViewOptions"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/orderDialogCardView"
         android:layout_weight="@integer/int1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,20 +17,14 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/orderDialogLabelTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/order_dialog_filter_title"
-                android:textSize="@dimen/sp28"
-                android:textStyle="bold"
+                style="@style/orderDialogLabelTitle"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogDivider"
                 app:layout_constraintStart_toStartOf="@id/orderDialogCardViewGuideLineVerticalStart"
                 app:layout_constraintTop_toBottomOf="@id/orderDialogCardViewGuideLineHorizontalTop" />
 
             <ImageButton
                 android:id="@+id/orderDialogBtnClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
+                style="@style/orderDialogBtnClose"
                 android:contentDescription="@string/order_dialog_button_cancel_description"
                 android:src="@drawable/close_icon"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogDivider"
@@ -40,25 +33,15 @@
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/orderDialogDivider"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp1"
-                android:layout_marginStart="@dimen/dp16"
+                style="@style/orderDialogDivider"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogBtnPlayStation"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
                 app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnPlayStation"
-                android:layout_width="@dimen/dp0"
-                android:layout_height="@dimen/dp82"
-                android:layout_marginTop="@dimen/dp42"
+                style="@style/orderDialogBtnPlayStation"
                 android:background="@color/transparent"
-                android:contentDescription="@string/test_text"
-                android:drawableLeft="@drawable/playstation_logo"
-                android:text="@string/order_dialog_label_button_playstation"
-                android:textColor="@color/md_theme_dark_surfaceVariant"
-                android:textSize="@dimen/sp28"
-                android:textStyle="bold"
                 app:backgroundTint="@color/grey_background"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
                 app:layout_constraintStart_toEndOf="@id/orderDialogCardViewGuideLineVerticalStart"
@@ -66,15 +49,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnXbox"
-                android:layout_width="@dimen/dp0"
-                android:layout_height="@dimen/dp82"
+                style="@style/orderDialogBtnXbox"
                 android:background="@color/transparent"
-                android:contentDescription="@string/test_text"
-                android:drawableLeft="@drawable/xbox_logo"
-                android:text="@string/order_dialog_label_button_xbox"
-                android:textColor="@color/md_theme_dark_surfaceVariant"
-                android:textSize="@dimen/sp28"
-                android:textStyle="bold"
                 app:backgroundTint="@color/grey_background"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogBtnNintendo"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
@@ -83,15 +59,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnNintendo"
-                android:layout_width="@dimen/dp0"
-                android:layout_height="@dimen/dp82"
+                style="@style/orderDialogBtnNintendo"
                 android:background="@color/transparent"
-                android:contentDescription="@string/test_text"
-                android:drawableLeft="@drawable/nintendo_logo"
-                android:text="@string/order_dialog_label_button_nintendo"
-                android:textColor="@color/md_theme_dark_surfaceVariant"
-                android:textSize="@dimen/sp28"
-                android:textStyle="bold"
                 app:backgroundTint="@color/grey_background"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogBtnAllPlatform"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
@@ -100,15 +69,8 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/orderDialogBtnAllPlatform"
-                android:layout_width="@dimen/dp0"
-                android:layout_height="@dimen/dp82"
+                style="@style/orderDialogBtnAllPlatform"
                 android:background="@color/transparent"
-                android:contentDescription="@string/test_text"
-                android:drawableLeft="@drawable/all_platform_icon"
-                android:text="@string/order_dialog_label_button_all_platform"
-                android:textColor="@color/md_theme_dark_surfaceVariant"
-                android:textSize="@dimen/sp28"
-                android:textStyle="bold"
                 app:backgroundTint="@color/grey_background"
                 app:layout_constraintBottom_toTopOf="@id/orderDialogCardViewGuideLineHorizontalBottom"
                 app:layout_constraintEnd_toStartOf="@id/orderDialogCardViewGuideLineVerticalEnd"
@@ -117,43 +79,30 @@
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orderDialogCardViewGuideLineVerticalStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                style="@style/GuideLineVerticalStart"
                 app:layout_constraintGuide_percent="0.08" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orderDialogCardViewGuideLineHorizontalTop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                style="@style/GuideLineVerticalTop"
                 app:layout_constraintGuide_percent="0.04" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orderDialogCardViewGuideLineVerticalEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                style="@style/GuideLineVerticalEnd"
                 app:layout_constraintGuide_percent="0.92" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orderDialogCardViewGuideLineHorizontalBottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                style="@style/GuideLineVerticalBottom"
                 app:layout_constraintGuide_percent="0.96" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/orderDialogBtnAccept"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp16"
+        style="@style/orderDialogBtnAccept"
         android:backgroundTint="@color/green_accept"
-        android:text="@string/order_dialog_button_accept"
-        android:textSize="@dimen/sp24"
-        android:textStyle="bold"
         app:cornerRadius="@dimen/dp6"
         app:layout_constraintTop_toBottomOf="@id/orderDialogCardViewOptions" />
 
