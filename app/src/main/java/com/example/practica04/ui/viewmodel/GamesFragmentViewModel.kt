@@ -22,7 +22,7 @@ class GamesFragmentViewModel() : ViewModel() {
     private val repository: GamesRepository by lazy { GamesRepository(GamesBoMockProvider) }
     val gamesList = MutableLiveData<List<GameBo>>()
     val selectFilter = MutableLiveData<CompatiblePlatform?>()
-    private val sortSelected: MutableLiveData<SortType> = MutableLiveData<SortType>().apply {
+    val sortSelected: MutableLiveData<SortType> = MutableLiveData<SortType>().apply {
         value = SortType.ID
     }
     val selectFilterButton = MutableLiveData<Button>()
@@ -45,7 +45,7 @@ class GamesFragmentViewModel() : ViewModel() {
                     if (selectFilter.value == null) {
                         gamesList.postValue(repository.getGamesSorted(SortType.ID))
                     } else {
-                        filterGames(selectFilter.value)
+                        filterGames(selectFilter.value ?: return@launch)
                     }
                     sortSelected.value = SortType.ID
                 }
@@ -54,7 +54,7 @@ class GamesFragmentViewModel() : ViewModel() {
                     if (selectFilter.value == null) {
                         gamesList.postValue(repository.getGamesSorted(SortType.NAME))
                     } else {
-                        filterGames(selectFilter.value)
+                        filterGames(selectFilter.value ?: return@launch)
                     }
                     sortSelected.value = SortType.NAME
                 }
@@ -64,69 +64,22 @@ class GamesFragmentViewModel() : ViewModel() {
         }
     }
 
-    fun selectedOrderBtn(iconId: ImageButton, iconAlphabet: ImageButton, context: Context) {
+/*    fun selectedOrderBtn(iconId: ImageButton, iconAlphabet: ImageButton, context: Context) {
         if (sortSelected.value == SortType.ID) {
-            iconId.background =
-                ContextCompat.getDrawable(context, R.drawable.circular_order_icon_background)
-            iconAlphabet.background = null
+
         } else {
-            iconAlphabet.background =
-                ContextCompat.getDrawable(context, R.drawable.circular_order_icon_background)
-            iconId.background = null
+
         }
-    }
+    }*/
 
-    fun filterGames(filter: CompatiblePlatform?) {
-        when (filter) {
-            CompatiblePlatform.NINTENDO -> {
-                viewModelScope.launch {
-                    gamesList.postValue(
-                        repository.getGamesFiltered(
-                            CompatiblePlatform.NINTENDO,
-                            sortSelected.value ?: return@launch
-                        )
-                    )
-                }
-            }
-
-            CompatiblePlatform.PLAYSTATION -> {
-                viewModelScope.launch {
-                    gamesList.postValue(
-                        repository.getGamesFiltered(
-                            CompatiblePlatform.PLAYSTATION,
-                            sortSelected.value ?: return@launch
-                        )
-                    )
-                }
-            }
-
-            CompatiblePlatform.XBOX -> {
-                viewModelScope.launch {
-                    gamesList.postValue(
-                        repository.getGamesFiltered(
-                            CompatiblePlatform.XBOX,
-                            sortSelected.value ?: return@launch
-                        )
-                    )
-                }
-            }
-
-            CompatiblePlatform.ALL -> {
-                viewModelScope.launch {
-                    gamesList.postValue(
-                        repository.getGames()
-                    )
-                }
-                selectFilter.value = null
-            }
-
-            else -> {
-                viewModelScope.launch {
-                    gamesList.postValue(
-                        repository.getGames()
-                    )
-                }
-            }
+    fun filterGames(filter: CompatiblePlatform) {
+        viewModelScope.launch {
+            gamesList.postValue(
+                repository.getGamesFiltered(
+                    filter,
+                    sortSelected.value ?: return@launch
+                )
+            )
         }
     }
 

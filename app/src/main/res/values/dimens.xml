@@ -21,4 +21,8 @@
     <dimen name="dp2">2dp</dimen>
     <dimen name="sp24">24sp</dimen>
     <dimen name="dp82">82dp</dimen>
+    <dimen name="percent0.96">0.96</dimen>
+    <dimen name="percent0.92">0.92</dimen>
+    <dimen name="percent0.08">0.08</dimen>
+    <dimen name="percent0.04">0.04</dimen>
 </resources>

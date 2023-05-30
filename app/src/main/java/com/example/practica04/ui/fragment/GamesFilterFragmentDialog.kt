@@ -52,7 +52,7 @@ class GamesFilterFragmentDialog : DialogFragment() {
             }
 
             orderDialogBtnAccept.setOnClickListener {
-                gamesFragmentViewModel.filterGames(gamesFragmentViewModel.selectFilter.value)
+                gamesFragmentViewModel.filterGames(gamesFragmentViewModel.selectFilter.value ?: return@setOnClickListener)
                 dismiss()
             }
         }
