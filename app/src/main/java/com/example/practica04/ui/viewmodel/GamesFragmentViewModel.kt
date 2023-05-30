@@ -2,8 +2,6 @@ package com.example.practica04.ui.viewmodel
 
 import android.content.Context
 import android.widget.Button
-import android.widget.ImageButton
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,6 +20,9 @@ class GamesFragmentViewModel() : ViewModel() {
     private val repository: GamesRepository by lazy { GamesRepository(GamesBoMockProvider) }
     val gamesList = MutableLiveData<List<GameBo>>()
     val selectFilter = MutableLiveData<CompatiblePlatform?>()
+    val previousSelectedFilter: MutableLiveData<Button> = MutableLiveData<Button>().apply {
+        value = null
+    }
     val sortSelected: MutableLiveData<SortType> = MutableLiveData<SortType>().apply {
         value = SortType.ID
     }
@@ -64,14 +65,6 @@ class GamesFragmentViewModel() : ViewModel() {
         }
     }
 
-/*    fun selectedOrderBtn(iconId: ImageButton, iconAlphabet: ImageButton, context: Context) {
-        if (sortSelected.value == SortType.ID) {
-
-        } else {
-
-        }
-    }*/
-
     fun filterGames(filter: CompatiblePlatform) {
         viewModelScope.launch {
             gamesList.postValue(
@@ -87,16 +80,10 @@ class GamesFragmentViewModel() : ViewModel() {
         getGames()
     }
 
-    fun selectedFilter(context: Context, button: Button) {
+    fun selectedFilter(button: Button) {
         selectFilter.value = CompatiblePlatform.fromPlatform(button.text.toString())
-        val previousButton = selectFilterButton.value
+        previousSelectedFilter.value = selectFilterButton.value
         selectFilterButton.value = button
-
-        if (button != previousButton) {
-            button.background =
-                ContextCompat.getDrawable(button.context, R.drawable.selected_button_backgroun)
-            previousButton?.background = null
-        }
     }
 
     fun showDialog(navController: NavController) {

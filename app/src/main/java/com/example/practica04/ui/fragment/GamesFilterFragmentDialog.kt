@@ -2,6 +2,8 @@ package com.example.practica04.ui.fragment
 
 import android.app.Dialog
 import android.os.Bundle
+import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.practica04.R
@@ -18,32 +20,45 @@ class GamesFilterFragmentDialog : DialogFragment() {
         dialog.setContentView(customOrderDialogBinding.root)
         dialog.setCancelable(true)
 
+
         with(customOrderDialogBinding) {
             orderDialogBtnPlayStation.setOnClickListener {
                 gamesFragmentViewModel.selectedFilter(
-                    requireContext(),
                     orderDialogBtnPlayStation
+                )
+                updateFilterBtnBackground(
+                    orderDialogBtnPlayStation,
+                    gamesFragmentViewModel.previousSelectedFilter.value
                 )
             }
 
             orderDialogBtnXbox.setOnClickListener {
                 gamesFragmentViewModel.selectedFilter(
-                    requireContext(),
                     orderDialogBtnXbox
+                )
+                updateFilterBtnBackground(
+                    orderDialogBtnXbox,
+                    gamesFragmentViewModel.previousSelectedFilter.value
                 )
             }
 
             orderDialogBtnNintendo.setOnClickListener {
                 gamesFragmentViewModel.selectedFilter(
-                    requireContext(),
                     orderDialogBtnNintendo
+                )
+                updateFilterBtnBackground(
+                    orderDialogBtnNintendo,
+                    gamesFragmentViewModel.previousSelectedFilter.value
                 )
             }
 
             orderDialogBtnAllPlatform.setOnClickListener {
                 gamesFragmentViewModel.selectedFilter(
-                    requireContext(),
                     orderDialogBtnAllPlatform
+                )
+                updateFilterBtnBackground(
+                    orderDialogBtnAllPlatform,
+                    gamesFragmentViewModel.previousSelectedFilter.value
                 )
             }
 
@@ -52,10 +67,20 @@ class GamesFilterFragmentDialog : DialogFragment() {
             }
 
             orderDialogBtnAccept.setOnClickListener {
-                gamesFragmentViewModel.filterGames(gamesFragmentViewModel.selectFilter.value ?: return@setOnClickListener)
+                gamesFragmentViewModel.filterGames(
+                    gamesFragmentViewModel.selectFilter.value ?: return@setOnClickListener
+                )
                 dismiss()
             }
         }
         return dialog
+    }
+
+    private fun updateFilterBtnBackground(newBtn: Button, prevBtn: Button?) {
+        if (newBtn != prevBtn) {
+            newBtn.background =
+                ContextCompat.getDrawable(newBtn.context, R.drawable.selected_button_backgroun)
+            prevBtn?.background = null
+        }
     }
 }
