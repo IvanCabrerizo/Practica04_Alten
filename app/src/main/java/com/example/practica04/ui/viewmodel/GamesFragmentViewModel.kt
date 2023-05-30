@@ -10,13 +10,16 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practica04.R
+import com.example.practica04.data.mock.GamesBoMockProvider
 import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GamesFragmentViewModel(private val repository: GamesRepository) : ViewModel() {
+class GamesFragmentViewModel() : ViewModel() {
+
+    private val repository: GamesRepository by lazy { GamesRepository(GamesBoMockProvider) }
     val gamesList = MutableLiveData<List<GameBo>>()
     val selectFilter = MutableLiveData<CompatiblePlatform?>()
     private val sortSelected: MutableLiveData<SortType> = MutableLiveData<SortType>().apply {

@@ -5,23 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.practica04.data.mock.GamesBoMockProvider
-import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.databinding.FragmentGamesBinding
 import com.example.practica04.ui.adapter.GamesListAdapter
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 
 class GamesFragment : Fragment() {
 
-    companion object {
-        val gamesFragmentViewModel: GamesFragmentViewModel by lazy {
-            GamesFragmentViewModel(GamesRepository(GamesBoMockProvider))
-        }
-    }
 
+    private val gamesFragmentViewModel: GamesFragmentViewModel by activityViewModels()
     private val binding by lazy { FragmentGamesBinding.inflate(layoutInflater) }
     private val gamesAdapter = GamesListAdapter()
     private lateinit var gamesFragmentNavController: NavController

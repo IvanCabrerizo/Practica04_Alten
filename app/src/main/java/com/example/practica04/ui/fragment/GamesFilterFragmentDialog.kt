@@ -3,11 +3,14 @@ package com.example.practica04.ui.fragment
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import com.example.practica04.R
 import com.example.practica04.databinding.CustomOrderDialogBinding
+import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 
 class GamesFilterFragmentDialog : DialogFragment() {
 
+    private val gamesFragmentViewModel: GamesFragmentViewModel by activityViewModels()
     private val customOrderDialogBinding by lazy { CustomOrderDialogBinding.inflate(layoutInflater) }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -17,28 +20,28 @@ class GamesFilterFragmentDialog : DialogFragment() {
 
         with(customOrderDialogBinding) {
             orderDialogBtnPlayStation.setOnClickListener {
-                GamesFragment.gamesFragmentViewModel.selectedFilter(
+                gamesFragmentViewModel.selectedFilter(
                     requireContext(),
                     orderDialogBtnPlayStation
                 )
             }
 
             orderDialogBtnXbox.setOnClickListener {
-                GamesFragment.gamesFragmentViewModel.selectedFilter(
+                gamesFragmentViewModel.selectedFilter(
                     requireContext(),
                     orderDialogBtnXbox
                 )
             }
 
             orderDialogBtnNintendo.setOnClickListener {
-                GamesFragment.gamesFragmentViewModel.selectedFilter(
+                gamesFragmentViewModel.selectedFilter(
                     requireContext(),
                     orderDialogBtnNintendo
                 )
             }
 
             orderDialogBtnAllPlatform.setOnClickListener {
-                GamesFragment.gamesFragmentViewModel.selectedFilter(
+                gamesFragmentViewModel.selectedFilter(
                     requireContext(),
                     orderDialogBtnAllPlatform
                 )
@@ -49,7 +52,7 @@ class GamesFilterFragmentDialog : DialogFragment() {
             }
 
             orderDialogBtnAccept.setOnClickListener {
-                GamesFragment.gamesFragmentViewModel.filterGames(GamesFragment.gamesFragmentViewModel.selectFilter.value)
+                gamesFragmentViewModel.filterGames(gamesFragmentViewModel.selectFilter.value)
                 dismiss()
             }
         }
