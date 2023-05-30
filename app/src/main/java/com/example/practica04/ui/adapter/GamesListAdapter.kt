@@ -11,6 +11,7 @@ import com.example.practica04.databinding.GamesListItemBinding
 import com.example.practica04.imageUrl
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
+import com.example.practica04.model.Pegi
 
 class GamesListAdapter :
     ListAdapter<GameBo, GamesListAdapter.GameBoViewHolder>(GamesDiffUtilCallBack) {
@@ -41,14 +42,16 @@ class GamesListAdapter :
                 gameListItemImgNintendo.isVisible =
                     item.compatiblePlatform.contains(CompatiblePlatform.NINTENDO)
 
-                when (item.pegi) {
-                    3 -> gameListItemImgPegi.setImageResource(R.drawable.pegi3)
-                    7 -> gameListItemImgPegi.setImageResource(R.drawable.pegi7)
-                    12 -> gameListItemImgPegi.setImageResource(R.drawable.pegi12)
-                    16 -> gameListItemImgPegi.setImageResource(R.drawable.pegi16)
-                    18 -> gameListItemImgPegi.setImageResource(R.drawable.pegi18)
-                    else -> gameListItemImgPegi.setImageDrawable(null)
-                }
+
+                gameListItemImgPegi.setImageResource(
+                    when(item.pegi){
+                        Pegi.PEGI3 -> R.drawable.pegi3
+                        Pegi.PEGI7 -> R.drawable.pegi7
+                        Pegi.PEGI12 -> R.drawable.pegi12
+                        Pegi.PEGI16 -> R.drawable.pegi16
+                        Pegi.PEGI18 -> R.drawable.pegi18
+                    }
+                )
             }
         }
     }

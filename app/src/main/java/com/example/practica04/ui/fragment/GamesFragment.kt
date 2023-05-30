@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.practica04.data.mock.GamesBoMockList
+import com.example.practica04.data.mock.GamesBoMockProvider
 import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.databinding.FragmentGamesBinding
 import com.example.practica04.ui.adapter.GamesListAdapter
@@ -18,7 +18,7 @@ class GamesFragment : Fragment() {
 
     companion object {
         val gamesFragmentViewModel: GamesFragmentViewModel by lazy {
-            GamesFragmentViewModel(GamesRepository(GamesBoMockList()))
+            GamesFragmentViewModel(GamesRepository(GamesBoMockProvider))
         }
     }
 
@@ -43,15 +43,15 @@ class GamesFragment : Fragment() {
             adapter = gamesAdapter
         }
 
-        gamesFragmentViewModel.getGames()
-
         gamesFragmentViewModel.gamesList.observe(viewLifecycleOwner) { gameList ->
             gamesAdapter.submitList(gameList)
         }
 
+        gamesFragmentViewModel.getGames()
+
         binding.gamesFragmentBtnIdOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                sortGames("ID", binding.gamesFragmentListGames)
+                sortGames(GamesFragmentViewModel.SortType.ID, binding.gamesFragmentListGames)
                 selectedOrderBtn(
                     binding.gamesFragmentBtnIdOrder,
                     binding.gamesFragmentBtnAlphabetOrder,
@@ -62,7 +62,7 @@ class GamesFragment : Fragment() {
 
         binding.gamesFragmentBtnAlphabetOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                sortGames("NAME", binding.gamesFragmentListGames)
+                sortGames(GamesFragmentViewModel.SortType.NAME, binding.gamesFragmentListGames)
                 selectedOrderBtn(
                     binding.gamesFragmentBtnIdOrder,
                     binding.gamesFragmentBtnAlphabetOrder,

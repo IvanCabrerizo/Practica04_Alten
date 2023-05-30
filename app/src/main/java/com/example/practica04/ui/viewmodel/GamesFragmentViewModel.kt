@@ -35,10 +35,10 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
         }
     }
 
-    fun sortGames(sort: String, recycler: RecyclerView) {
+    fun sortGames(sort: SortType, recycler: RecyclerView) {
         viewModelScope.launch {
             when (sort) {
-                "ID" -> {
+                SortType.ID -> {
                     if (selectFilter.value == null) {
                         gamesList.postValue(repository.getGamesSorted(SortType.ID))
                     } else {
@@ -47,7 +47,7 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
                     sortSelected.value = SortType.ID
                 }
 
-                "NAME" -> {
+                SortType.NAME -> {
                     if (selectFilter.value == null) {
                         gamesList.postValue(repository.getGamesSorted(SortType.NAME))
                     } else {
@@ -78,7 +78,10 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
             CompatiblePlatform.NINTENDO -> {
                 viewModelScope.launch {
                     gamesList.postValue(
-                        repository.getGamesFiltered(CompatiblePlatform.NINTENDO, sortSelected.value)
+                        repository.getGamesFiltered(
+                            CompatiblePlatform.NINTENDO,
+                            sortSelected.value ?: return@launch
+                        )
                     )
                 }
             }
@@ -88,7 +91,7 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
                     gamesList.postValue(
                         repository.getGamesFiltered(
                             CompatiblePlatform.PLAYSTATION,
-                            sortSelected.value
+                            sortSelected.value ?: return@launch
                         )
                     )
                 }
@@ -97,7 +100,10 @@ class GamesFragmentViewModel(private val repository: GamesRepository) : ViewMode
             CompatiblePlatform.XBOX -> {
                 viewModelScope.launch {
                     gamesList.postValue(
-                        repository.getGamesFiltered(CompatiblePlatform.XBOX, sortSelected.value)
+                        repository.getGamesFiltered(
+                            CompatiblePlatform.XBOX,
+                            sortSelected.value ?: return@launch
+                        )
                     )
                 }
             }
