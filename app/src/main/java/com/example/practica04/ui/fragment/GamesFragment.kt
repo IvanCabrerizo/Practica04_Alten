@@ -42,6 +42,7 @@ class GamesFragment : Fragment() {
 
         gamesFragmentViewModel.gamesList.observe(viewLifecycleOwner) { gameList ->
             gamesAdapter.submitList(gameList)
+
         }
 
         gamesFragmentViewModel.sortSelected.observe(viewLifecycleOwner) { sort ->

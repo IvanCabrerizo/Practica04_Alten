@@ -94,7 +94,7 @@
     <style name="orderDialogLabelTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">"@string/deleteLabel"</item>
+        <item name="android:text">"@string/order_dialog_filter_title"</item>
         <item name="android:textSize">@dimen/sp28</item>
         <item name="android:textStyle">bold</item>
     </style>
