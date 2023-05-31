@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.practica04.R
 import com.example.practica04.databinding.FragmentLauncherBinding
 import com.example.practica04.ui.viewmodel.LauncherFragmentViewModel
 
@@ -24,6 +25,11 @@ class LauncherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        launcherViewModel.navigateWithDelay(findNavController())
+        launcherViewModel.getNavigationStart().observe(viewLifecycleOwner) { navStart ->
+            if (navStart) {
+                findNavController().navigate(R.id.action_launcherFragment_to_gamesFragment)
+            }
+        }
+        launcherViewModel.navigateWithDelay()
     }
 }

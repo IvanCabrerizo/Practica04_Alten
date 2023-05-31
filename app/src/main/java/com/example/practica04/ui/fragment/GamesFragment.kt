@@ -42,7 +42,13 @@ class GamesFragment : Fragment() {
 
         gamesFragmentViewModel.gamesList.observe(viewLifecycleOwner) { gameList ->
             gamesAdapter.submitList(gameList)
+            binding.gamesFragmentListGames.scrollToPosition(0)
+        }
 
+        gamesFragmentViewModel.getOrderDialogStart().observe(viewLifecycleOwner) { orderDialog ->
+            if (orderDialog) {
+                findNavController().navigate(R.id.action_gamesFragment_to_gamesFilterDialog)
+            }
         }
 
         gamesFragmentViewModel.sortSelected.observe(viewLifecycleOwner) { sort ->
@@ -65,18 +71,18 @@ class GamesFragment : Fragment() {
 
         binding.gamesFragmentBtnIdOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                sortGames(GamesFragmentViewModel.SortType.ID, binding.gamesFragmentListGames)
+                sortGames(GamesFragmentViewModel.SortType.ID)
             }
         }
 
         binding.gamesFragmentBtnAlphabetOrder.setOnClickListener {
             with(gamesFragmentViewModel) {
-                sortGames(GamesFragmentViewModel.SortType.NAME, binding.gamesFragmentListGames)
+                sortGames(GamesFragmentViewModel.SortType.NAME)
             }
         }
 
         binding.gamesFragmentBtnPlatformOrder.setOnClickListener {
-            gamesFragmentViewModel.showDialog(gamesFragmentNavController)
+            gamesFragmentViewModel.showOrderDialog()
         }
     }
 }

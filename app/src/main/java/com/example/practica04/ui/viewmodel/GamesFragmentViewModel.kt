@@ -1,25 +1,24 @@
 package com.example.practica04.ui.viewmodel
 
-import android.content.Context
 import android.widget.Button
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavController
-import androidx.recyclerview.widget.RecyclerView
-import com.example.practica04.R
 import com.example.practica04.data.mock.GamesBoMockProvider
 import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class GamesFragmentViewModel() : ViewModel() {
 
     private val repository: GamesRepository by lazy { GamesRepository(GamesBoMockProvider) }
     val gamesList = MutableLiveData<List<GameBo>>()
-    val selectFilter = MutableLiveData<CompatiblePlatform?>()
+    val selectFilter: MutableLiveData<CompatiblePlatform> =
+        MutableLiveData<CompatiblePlatform>().apply {
+            value = CompatiblePlatform.ALL
+        }
     val previousSelectedFilter: MutableLiveData<Button> = MutableLiveData<Button>().apply {
         value = null
     }
@@ -27,10 +26,17 @@ class GamesFragmentViewModel() : ViewModel() {
         value = SortType.ID
     }
     val selectFilterButton = MutableLiveData<Button>()
+    private val orderDialogStart: MutableLiveData<Boolean> = MutableLiveData<Boolean>().apply {
+        value = false
+    }
 
     enum class SortType(name: String) {
         ID("ID"),
         NAME("NAME"),
+    }
+
+    fun getOrderDialogStart(): LiveData<Boolean> {
+        return orderDialogStart
     }
 
     fun getGames() {
@@ -39,14 +45,14 @@ class GamesFragmentViewModel() : ViewModel() {
         }
     }
 
-    fun sortGames(sort: SortType, recycler: RecyclerView) {
+    fun sortGames(sort: SortType) {
         viewModelScope.launch {
             when (sort) {
                 SortType.ID -> {
                     if (selectFilter.value == null) {
                         gamesList.postValue(repository.getGamesSorted(SortType.ID))
                     } else {
-                        filterGames(selectFilter.value ?: return@launch)
+                        filterGames(selectFilter.value ?: CompatiblePlatform.ALL)
                     }
                     sortSelected.value = SortType.ID
                 }
@@ -55,13 +61,11 @@ class GamesFragmentViewModel() : ViewModel() {
                     if (selectFilter.value == null) {
                         gamesList.postValue(repository.getGamesSorted(SortType.NAME))
                     } else {
-                        filterGames(selectFilter.value ?: return@launch)
+                        filterGames(selectFilter.value ?: CompatiblePlatform.ALL)
                     }
                     sortSelected.value = SortType.NAME
                 }
             }
-            delay(100)
-            recycler.scrollToPosition(0)
         }
     }
 
@@ -70,14 +74,10 @@ class GamesFragmentViewModel() : ViewModel() {
             gamesList.postValue(
                 repository.getGamesFiltered(
                     filter,
-                    sortSelected.value ?: return@launch
+                    sortSelected.value ?: SortType.ID
                 )
             )
         }
-    }
-
-    fun restoreGameList() {
-        getGames()
     }
 
     fun selectedFilter(button: Button) {
@@ -86,7 +86,7 @@ class GamesFragmentViewModel() : ViewModel() {
         selectFilterButton.value = button
     }
 
-    fun showDialog(navController: NavController) {
-        navController.navigate(R.id.action_gamesFragment_to_gamesFilterDialog)
+    fun showOrderDialog() {
+        orderDialogStart.postValue(true)
     }
 }

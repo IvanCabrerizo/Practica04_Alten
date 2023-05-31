@@ -15,10 +15,14 @@ class GamesRepository(private val gameBoMock: GamesBoMockProvider) {
         platform: CompatiblePlatform,
         sort: GamesFragmentViewModel.SortType
     ): List<GameBo> {
-        val filteredList = gameBoMock.gameList.filter { game ->
-            platform in game.compatiblePlatform
+        return if (platform == CompatiblePlatform.ALL) {
+            sortList(sort, gameBoMock.gameList)
+        } else {
+            val filteredList = gameBoMock.gameList.filter { game ->
+                platform in game.compatiblePlatform
+            }
+            sortList(sort, filteredList)
         }
-        return sortList(sort, filteredList)
     }
 
     suspend fun getGamesSorted(sort: GamesFragmentViewModel.SortType): List<GameBo> {

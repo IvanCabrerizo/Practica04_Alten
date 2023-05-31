@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.practica04.R
 import com.example.practica04.databinding.CustomOrderDialogBinding
+import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 
 class GamesFilterFragmentDialog : DialogFragment() {
@@ -68,7 +69,7 @@ class GamesFilterFragmentDialog : DialogFragment() {
 
             orderDialogBtnAccept.setOnClickListener {
                 gamesFragmentViewModel.filterGames(
-                    gamesFragmentViewModel.selectFilter.value ?: return@setOnClickListener
+                    gamesFragmentViewModel.selectFilter.value ?: CompatiblePlatform.ALL
                 )
                 dismiss()
             }
