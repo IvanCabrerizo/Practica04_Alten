@@ -79,22 +79,22 @@
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orderDialogCardViewGuideLineVerticalStart"
-                style="@style/GuideLineVerticalStart"
+                style="@style/GuideLineVertical"
                 app:layout_constraintGuide_percent="@dimen/percent0.08" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orderDialogCardViewGuideLineHorizontalTop"
-                style="@style/GuideLineVerticalTop"
+                style="@style/GuideLineHorizontal"
                 app:layout_constraintGuide_percent="@dimen/percent0.04" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orderDialogCardViewGuideLineVerticalEnd"
-                style="@style/GuideLineVerticalEnd"
+                style="@style/GuideLineVertical"
                 app:layout_constraintGuide_percent="@dimen/percent0.92" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orderDialogCardViewGuideLineHorizontalBottom"
-                style="@style/GuideLineVerticalBottom"
+                style="@style/GuideLineHorizontal"
                 app:layout_constraintGuide_percent="@dimen/percent0.96" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
