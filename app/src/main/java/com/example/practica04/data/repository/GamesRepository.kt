@@ -12,8 +12,7 @@ class GamesRepository(private val gameBoMock: GamesBoMockProvider) {
     }
 
     suspend fun getGamesFiltered(
-        platform: CompatiblePlatform,
-        sort: GamesFragmentViewModel.SortType
+        platform: CompatiblePlatform, sort: GamesFragmentViewModel.SortType
     ): List<GameBo> {
         return if (platform == CompatiblePlatform.ALL) {
             sortList(sort, gameBoMock.gameList)
@@ -27,6 +26,13 @@ class GamesRepository(private val gameBoMock: GamesBoMockProvider) {
 
     suspend fun getGamesSorted(sort: GamesFragmentViewModel.SortType): List<GameBo> {
         return sortList(sort, gameBoMock.gameList)
+    }
+
+    suspend fun deleteGame(game: GameBo): List<GameBo> {
+        gameBoMock.gameList = gameBoMock.gameList.toMutableList().apply {
+            remove(game)
+        }
+        return gameBoMock.gameList
     }
 
     private fun sortList(sort: GamesFragmentViewModel.SortType, list: List<GameBo>): List<GameBo> {

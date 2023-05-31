@@ -25,11 +25,19 @@
         <action
             android:id="@+id/action_gamesFragment_to_gamesFilterDialog"
             app:destination="@id/gamesFilterFragmentDialog" />
+        <action
+            android:id="@+id/action_gamesFragment_to_gamesDeleteFragmentDialog"
+            app:destination="@id/gamesDeleteFragmentDialog" />
     </fragment>
 
     <dialog
         android:id="@+id/gamesFilterFragmentDialog"
         android:name="com.example.practica04.ui.fragment.GamesFilterFragmentDialog"
         android:label="GamesFilterFragmentDialog"
-        tools:layout="@layout/custom_order_dialog"/>
+        tools:layout="@layout/custom_order_dialog" />
+    <dialog
+        android:id="@+id/gamesDeleteFragmentDialog"
+        android:name="com.example.practica04.ui.fragment.GamesDeleteFragmentDialog"
+        android:label="GamesDeleteFragmentDialog"
+        tools:layout="@layout/custom_delete_dialog" />
 </navigation>

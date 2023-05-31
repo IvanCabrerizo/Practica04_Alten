@@ -201,10 +201,11 @@
     </style>
 
     <style name="deleteDialogLabelConfirmation">
-        <item name="android:layout_width">@dimen/dp0</item>
-        <item name="android:layout_height">@dimen/dp0</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">@dimen/sp32</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp42</item>
+        <item name="android:layout_marginBottom">@dimen/dp42</item>
+        <item name="android:textSize">@dimen/sp28</item>
     </style>
 
 </resources>

@@ -5,7 +5,7 @@ import com.example.practica04.model.GameBo
 import com.example.practica04.model.Pegi
 
 object GamesBoMockProvider {
-    val gameList = listOf(
+    var gameList = listOf(
         GameBo(
             2,
             "Zelda Breath of the wild",

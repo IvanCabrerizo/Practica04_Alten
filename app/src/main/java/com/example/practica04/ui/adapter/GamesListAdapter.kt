@@ -13,8 +13,12 @@ import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 import com.example.practica04.model.Pegi
 
-class GamesListAdapter :
+class GamesListAdapter(private val gameLongClickListener: GameLongClickListener) :
     ListAdapter<GameBo, GamesListAdapter.GameBoViewHolder>(GamesDiffUtilCallBack) {
+
+    interface GameLongClickListener {
+        fun gameLongClick(game: GameBo)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameBoViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -44,7 +48,7 @@ class GamesListAdapter :
 
 
                 gameListItemImgPegi.setImageResource(
-                    when(item.pegi){
+                    when (item.pegi) {
                         Pegi.PEGI3 -> R.drawable.pegi3
                         Pegi.PEGI7 -> R.drawable.pegi7
                         Pegi.PEGI12 -> R.drawable.pegi12
@@ -52,6 +56,11 @@ class GamesListAdapter :
                         Pegi.PEGI18 -> R.drawable.pegi18
                     }
                 )
+
+                itemView.setOnLongClickListener {
+                    gameLongClickListener.gameLongClick(item)
+                    true
+                }
             }
         }
     }

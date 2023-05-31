@@ -12,15 +12,16 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.practica04.R
 import com.example.practica04.databinding.FragmentGamesBinding
+import com.example.practica04.model.GameBo
 import com.example.practica04.ui.adapter.GamesListAdapter
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 
-class GamesFragment : Fragment() {
+class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
 
 
     private val gamesFragmentViewModel: GamesFragmentViewModel by activityViewModels()
     private val binding by lazy { FragmentGamesBinding.inflate(layoutInflater) }
-    private val gamesAdapter = GamesListAdapter()
+    private val gamesAdapter = GamesListAdapter(this)
     private lateinit var gamesFragmentNavController: NavController
 
     override fun onCreateView(
@@ -41,8 +42,8 @@ class GamesFragment : Fragment() {
         }
 
         gamesFragmentViewModel.gamesList.observe(viewLifecycleOwner) { gameList ->
-            gamesAdapter.submitList(gameList)
             binding.gamesFragmentListGames.scrollToPosition(0)
+            gamesAdapter.submitList(gameList)
         }
 
         gamesFragmentViewModel.getOrderDialogStart().observe(viewLifecycleOwner) { orderDialog ->
@@ -84,5 +85,10 @@ class GamesFragment : Fragment() {
         binding.gamesFragmentBtnPlatformOrder.setOnClickListener {
             gamesFragmentViewModel.showOrderDialog()
         }
+    }
+
+    override fun gameLongClick(game: GameBo) {
+        gamesFragmentViewModel.updateItemRecyclerSelected(game)
+        findNavController().navigate(R.id.action_gamesFragment_to_gamesDeleteFragmentDialog)
     }
 }
