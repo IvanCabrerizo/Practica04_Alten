@@ -15,6 +15,7 @@ import com.example.practica04.databinding.FragmentGamesBinding
 import com.example.practica04.model.GameBo
 import com.example.practica04.ui.adapter.GamesListAdapter
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
 
@@ -90,5 +91,13 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
     override fun gameLongClick(game: GameBo) {
         gamesFragmentViewModel.updateItemRecyclerSelected(game)
         findNavController().navigate(R.id.action_gamesFragment_to_gamesDeleteFragmentDialog)
+    }
+
+    fun snackBarRestoreGame() {
+        val snackbar = Snackbar.make(requireView(), "Juego eliminado", Snackbar.LENGTH_LONG)
+        snackbar.setAction("Deshacer") {
+            gamesFragmentViewModel.restoreDeletedGame()
+        }
+        snackbar.show()
     }
 }

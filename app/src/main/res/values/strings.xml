@@ -16,4 +16,15 @@
     <string name="order_dialog_label_button_xbox">Xbox</string>
     <string name="order_dialog_label_button_nintendo">Nintendo</string>
     <string name="order_dialog_label_button_all_platform">Todas</string>
+    <string name="addGameFragmentBtnBack_content_description">Boton que vuelve hacia la pantalla de juegos</string>
+    <string name="addGameFragmentLabelNewGame">Nuevo Juego</string>
+    <string name="addGameFragmentLabelName">Nombre</string>
+    <string name="addGameFragmentInputNameHint">Nombre</string>
+    <string name="addGameFragmentInputStudioHint">Estudio</string>
+    <string name="addGameFragmentLabelDate">Lanzamiento</string>
+    <string name="addGameFragmentInputDateHint">dd/mm/aaaa</string>
+    <string name="addGameFragmentLabelCover">Portada</string>
+    <string name="addGameFragmentInputCoverHint">https://urlGame.com/coverimage.png</string>
+    <string name="addGameFragmentLabelPlatform">Plataforma</string>
+    <string name="addGameFragmentLabelPegi">Pegi</string>
 </resources>

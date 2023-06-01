@@ -25,4 +25,7 @@
     <dimen name="percent0.92">0.92</dimen>
     <dimen name="percent0.08">0.08</dimen>
     <dimen name="percent0.04">0.04</dimen>
+    <dimen name="dp4">4dp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="dp52">52dp</dimen>
 </resources>

@@ -104,4 +104,8 @@ class GamesFragmentViewModel() : ViewModel() {
             }
         }
     }
+
+    fun restoreDeletedGame() {
+        TODO("Not yet implemented")
+    }
 }

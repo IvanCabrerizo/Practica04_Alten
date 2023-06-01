@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.AddGameFragment">
+
+    <ImageButton
+        android:id="@+id/addGameFragmentBtnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp4"
+        android:background="@null"
+        android:contentDescription="@string/addGameFragmentBtnBack_content_description"
+        android:src="@drawable/close_icon"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        app:layout_constraintTop_toTopOf="@id/addGameFragmentGuideLineHorizontalTop" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/addGameFragmentLabelNewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp16"
+        android:text="@string/addGameFragmentLabelNewGame"
+        android:textColor="@color/md_theme_dark_surfaceVariant"
+        android:textSize="@dimen/sp24"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/addGameFragmentBtnBack"
+        app:layout_constraintTop_toTopOf="@id/addGameFragmentGuideLineHorizontalTop" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/addGameFragmentDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="@dimen/dp8"
+        android:layout_marginEnd="@dimen/dp42"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentLabelNewGame" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/addGameFragmentLabelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp4"
+        android:text="@string/addGameFragmentLabelName"
+        android:textColor="@color/md_theme_light_outline"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintBottom_toTopOf="@id/addGameFragmentInputName"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addGameFragmentInputName"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp48"
+        android:hint="@string/addGameFragmentInputNameHint"
+        app:layout_constraintEnd_toStartOf="@id/addGameFragmentGuideLineVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentDivider">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addGameFragmentInputStudio"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp48"
+        android:hint="@string/addGameFragmentInputStudioHint"
+        app:layout_constraintEnd_toStartOf="@id/addGameFragmentGuideLineVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/addGameFragmentLabelDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp4"
+        android:text="@string/addGameFragmentLabelDate"
+        android:textColor="@color/md_theme_light_outline"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintBottom_toTopOf="@id/addGameFragmentInputDate"
+        app:layout_constraintStart_toEndOf="@id/addGameFragmentGuideLineVerticalStart" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addGameFragmentInputDate"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp48"
+        android:hint="@string/addGameFragmentInputDateHint"
+        app:layout_constraintEnd_toStartOf="@id/addGameFragmentGuideLineVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputStudio">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/addGameFragmentLabelCover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp4"
+        android:text="@string/addGameFragmentLabelCover"
+        android:textColor="@color/md_theme_light_outline"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintBottom_toTopOf="@id/addGameFragmentInputCover"
+        app:layout_constraintStart_toEndOf="@id/addGameFragmentGuideLineVerticalStart" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/addGameFragmentInputCover"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="@dimen/dp0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp48"
+        android:hint="@string/addGameFragmentInputCoverHint"
+        app:layout_constraintEnd_toStartOf="@id/addGameFragmentGuideLineVerticalEnd"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputDate">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/addGameFragmentLabelPlatform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp4"
+        android:text="@string/addGameFragmentLabelPlatform"
+        android:textColor="@color/md_theme_light_outline"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintBottom_toTopOf="@id/addGameFragmentBtnNintendo"
+        app:layout_constraintStart_toEndOf="@id/addGameFragmentGuideLineVerticalStart" />
+
+    <ImageButton
+        android:id="@+id/addGameFragmentBtnNintendo"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginTop="@dimen/dp48"
+        android:background="@color/transparent"
+        android:contentDescription="TODO"
+        android:padding="@dimen/dp8"
+        android:scaleType="centerCrop"
+        android:src="@drawable/nintendo_logo"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputCover" />
+
+    <ImageButton
+        android:id="@+id/addGameFragmentBtnPlayStation"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginStart="@dimen/dp6"
+        android:layout_marginTop="@dimen/dp48"
+        android:background="@color/transparent"
+        android:contentDescription="TODO"
+        android:padding="@dimen/dp8"
+        android:scaleType="centerCrop"
+        android:src="@drawable/playstation_logo"
+        app:layout_constraintStart_toEndOf="@id/addGameFragmentBtnNintendo"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputCover" />
+
+    <ImageButton
+        android:id="@+id/addGameFragmentBtnXbox"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginStart="@dimen/dp6"
+        android:layout_marginTop="@dimen/dp48"
+        android:background="@color/transparent"
+        android:contentDescription="TODO"
+        android:padding="@dimen/dp8"
+        android:scaleType="centerCrop"
+        android:src="@drawable/xbox_logo"
+        app:layout_constraintStart_toEndOf="@id/addGameFragmentBtnPlayStation"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputCover" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/addGameFragmentLabelPegi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginBottom="@dimen/dp4"
+        android:text="@string/addGameFragmentLabelPegi"
+        android:textColor="@color/md_theme_light_outline"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintBottom_toTopOf="@id/addGameFragmentBtnPegi"
+        app:layout_constraintEnd_toStartOf="@id/addGameFragmentGuideLineVerticalEnd" />
+
+    <ImageButton
+        android:id="@+id/addGameFragmentBtnPegi"
+        android:layout_width="@dimen/dp48"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginTop="@dimen/dp48"
+        android:background="@color/transparent"
+        android:contentDescription="TODO"
+        android:padding="@dimen/dp8"
+        android:scaleType="centerCrop"
+        android:src="@drawable/nintendo_logo"
+        app:layout_constraintEnd_toStartOf="@id/addGameFragmentGuideLineVerticalEnd"
+        app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputCover" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        app:layout_constraintEnd_toEndOf="@id/addGameFragmentGuideLineVerticalEnd"
+        app:layout_constraintBottom_toBottomOf="@id/addGameFragmentGuideLineHorizontalBottom"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addGameFragmentGuideLineVerticalStart"
+        style="@style/GuideLineVertical"
+        app:layout_constraintGuide_percent="@dimen/percent0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addGameFragmentGuideLineHorizontalTop"
+        style="@style/GuideLineHorizontal"
+        app:layout_constraintGuide_percent="@dimen/percent0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addGameFragmentGuideLineVerticalEnd"
+        style="@style/GuideLineVertical"
+        app:layout_constraintGuide_percent="@dimen/percent0.92" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/addGameFragmentGuideLineHorizontalBottom"
+        style="@style/GuideLineHorizontal"
+        app:layout_constraintGuide_percent="@dimen/percent0.96" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
