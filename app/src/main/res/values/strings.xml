@@ -27,4 +27,8 @@
     <string name="addGameFragmentInputCoverHint">https://urlGame.com/coverimage.png</string>
     <string name="addGameFragmentLabelPlatform">Plataforma</string>
     <string name="addGameFragmentLabelPegi">Pegi</string>
+    <string name="addGameFragmentBtnPegiDescription">Boton selección de pegi</string>
+    <string name="addGameFragmentBtnXboxDescription">Boton para seleccionar la plataforma de xbox</string>
+    <string name="addGameFragmentBtnPlayStationDescription">Boton de selección de la plataforma PlayStation</string>
+    <string name="addGameFragmentBtnNintendoDescription">Boton de selección de la plataforma Nintendo</string>
 </resources>

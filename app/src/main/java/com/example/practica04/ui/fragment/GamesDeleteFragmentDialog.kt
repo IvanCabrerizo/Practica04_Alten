@@ -7,7 +7,6 @@ import androidx.fragment.app.activityViewModels
 import com.example.practica04.R
 import com.example.practica04.databinding.CustomDeleteDialogBinding
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
-import com.google.android.material.snackbar.Snackbar
 
 class GamesDeleteFragmentDialog : DialogFragment() {
 
@@ -16,13 +15,18 @@ class GamesDeleteFragmentDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = Dialog(requireContext(), R.style.FullScreenDialog)
+
         dialog.setContentView(customDeleteDialogBinding.root)
         dialog.setCancelable(true)
+
+        val gameName = gamesFragmentViewModel.getItemRecyclerSelected().value?.name
 
         with(customDeleteDialogBinding) {
             orderDialogBtnClose.setOnClickListener {
                 dismiss()
             }
+
+            deleteDialogLabelConfirmation.text = "¿Estas seguro de que quieres eliminar $gameName?"
 
             orderDialogBtnAccept.setOnClickListener {
                 gamesFragmentViewModel.deleteGame()

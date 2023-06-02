@@ -71,7 +71,7 @@ class GamesFilterFragmentDialog : DialogFragment() {
                 gamesFragmentViewModel.filterGames(
                     gamesFragmentViewModel.selectFilter.value ?: CompatiblePlatform.ALL
                 )
-
+                dismiss()
             }
         }
         return dialog

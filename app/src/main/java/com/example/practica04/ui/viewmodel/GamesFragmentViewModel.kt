@@ -30,10 +30,15 @@ class GamesFragmentViewModel() : ViewModel() {
         value = false
     }
     private val itemRecyclerSelected = MutableLiveData<GameBo>()
+    private val deleteGame = MutableLiveData<GameBo?>(null)
 
     enum class SortType(name: String) {
         ID("ID"),
         NAME("NAME"),
+    }
+
+    fun getItemRecyclerSelected(): LiveData<GameBo> {
+        return itemRecyclerSelected
     }
 
     fun getOrderDialogStart(): LiveData<Boolean> {
@@ -99,13 +104,33 @@ class GamesFragmentViewModel() : ViewModel() {
         viewModelScope.launch {
             val deletedGame = itemRecyclerSelected.value
             if (deletedGame != null) {
+                deleteGame.postValue(deletedGame)
                 repository.deleteGame(deletedGame)
-                gamesList.postValue(repository.getGamesSorted(sortSelected.value ?: SortType.ID))
+                gamesList.postValue(
+                    repository.getGamesFiltered(
+                        selectFilter.value ?: CompatiblePlatform.ALL,
+                        sortSelected.value ?: SortType.ID
+                    )
+                )
             }
         }
     }
 
-    fun restoreDeletedGame() {
-        TODO("Not yet implemented")
+    fun addGame() {
+        deleteGame.postValue(null)
+    }
+
+    fun getDeleteGame(): LiveData<GameBo?> = deleteGame
+
+    fun addGame(game: GameBo) {
+        viewModelScope.launch {
+            repository.addGame(game)
+            gamesList.postValue(
+                repository.getGamesFiltered(
+                    selectFilter.value ?: CompatiblePlatform.ALL,
+                    sortSelected.value ?: SortType.ID
+                )
+            )
+        }
     }
 }

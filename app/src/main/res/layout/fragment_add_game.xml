@@ -13,7 +13,7 @@
         android:layout_marginTop="@dimen/dp4"
         android:background="@null"
         android:contentDescription="@string/addGameFragmentBtnBack_content_description"
-        android:src="@drawable/close_icon"
+        android:src="@drawable/back_btn_icon"
         app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
         app:layout_constraintTop_toTopOf="@id/addGameFragmentGuideLineHorizontalTop" />
 
@@ -157,7 +157,7 @@
         android:layout_height="@dimen/dp48"
         android:layout_marginTop="@dimen/dp48"
         android:background="@color/transparent"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/addGameFragmentBtnNintendoDescription"
         android:padding="@dimen/dp8"
         android:scaleType="centerCrop"
         android:src="@drawable/nintendo_logo"
@@ -171,7 +171,7 @@
         android:layout_marginStart="@dimen/dp6"
         android:layout_marginTop="@dimen/dp48"
         android:background="@color/transparent"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/addGameFragmentBtnPlayStationDescription"
         android:padding="@dimen/dp8"
         android:scaleType="centerCrop"
         android:src="@drawable/playstation_logo"
@@ -185,7 +185,7 @@
         android:layout_marginStart="@dimen/dp6"
         android:layout_marginTop="@dimen/dp48"
         android:background="@color/transparent"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/addGameFragmentBtnXboxDescription"
         android:padding="@dimen/dp8"
         android:scaleType="centerCrop"
         android:src="@drawable/xbox_logo"
@@ -210,21 +210,21 @@
         android:layout_height="@dimen/dp48"
         android:layout_marginTop="@dimen/dp48"
         android:background="@color/transparent"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/addGameFragmentBtnPegiDescription"
         android:padding="@dimen/dp8"
         android:scaleType="centerCrop"
-        android:src="@drawable/nintendo_logo"
+        android:src="@drawable/pegi3"
         app:layout_constraintEnd_toStartOf="@id/addGameFragmentGuideLineVerticalEnd"
         app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputCover" />
 
     <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         style="@style/addGameFragmentBtnSave"
         android:backgroundTint="@color/green_accept"
-        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+        android:enabled="false"
+        app:cornerRadius="@dimen/dp6"
+        app:layout_constraintBottom_toBottomOf="@id/addGameFragmentGuideLineHorizontalBottom"
         app:layout_constraintEnd_toEndOf="@id/addGameFragmentGuideLineVerticalEnd"
-        app:layout_constraintBottom_toBottomOf="@id/addGameFragmentGuideLineHorizontalBottom"/>
+        app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/addGameFragmentGuideLineVerticalStart"

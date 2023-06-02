@@ -35,6 +35,13 @@ class GamesRepository(private val gameBoMock: GamesBoMockProvider) {
         return gameBoMock.gameList
     }
 
+    suspend fun addGame(game: GameBo): List<GameBo> {
+        gameBoMock.gameList = gameBoMock.gameList.toMutableList().apply {
+            add(game)
+        }
+        return gameBoMock.gameList
+    }
+
     private fun sortList(sort: GamesFragmentViewModel.SortType, list: List<GameBo>): List<GameBo> {
         return when (sort) {
             GamesFragmentViewModel.SortType.ID -> list.sortedBy { it.id }

@@ -19,7 +19,6 @@ import com.google.android.material.snackbar.Snackbar
 
 class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
 
-
     private val gamesFragmentViewModel: GamesFragmentViewModel by activityViewModels()
     private val binding by lazy { FragmentGamesBinding.inflate(layoutInflater) }
     private val gamesAdapter = GamesListAdapter(this)
@@ -50,6 +49,13 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
         gamesFragmentViewModel.getOrderDialogStart().observe(viewLifecycleOwner) { orderDialog ->
             if (orderDialog) {
                 findNavController().navigate(R.id.action_gamesFragment_to_gamesFilterDialog)
+            }
+        }
+
+        gamesFragmentViewModel.getDeleteGame().observe(viewLifecycleOwner) { deleteGame ->
+            if (deleteGame != null) {
+                snackBarRestoreGame(deleteGame)
+                gamesFragmentViewModel.addGame()
             }
         }
 
@@ -93,10 +99,10 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
         findNavController().navigate(R.id.action_gamesFragment_to_gamesDeleteFragmentDialog)
     }
 
-    fun snackBarRestoreGame() {
+    fun snackBarRestoreGame(game: GameBo) {
         val snackbar = Snackbar.make(requireView(), "Juego eliminado", Snackbar.LENGTH_LONG)
         snackbar.setAction("Deshacer") {
-            gamesFragmentViewModel.restoreDeletedGame()
+            gamesFragmentViewModel.addGame(game)
         }
         snackbar.show()
     }
