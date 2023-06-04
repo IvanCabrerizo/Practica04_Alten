@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_gamesFragment_to_gamesDeleteFragmentDialog"
             app:destination="@id/gamesDeleteFragmentDialog" />
+        <action
+            android:id="@+id/action_gamesFragment_to_addGameFragment"
+            app:destination="@id/addGameFragment" />
     </fragment>
 
     <dialog
@@ -40,4 +43,9 @@
         android:name="com.example.practica04.ui.fragment.GamesDeleteFragmentDialog"
         android:label="GamesDeleteFragmentDialog"
         tools:layout="@layout/custom_delete_dialog" />
+    <fragment
+        android:id="@+id/addGameFragment"
+        android:name="com.example.practica04.ui.fragment.AddGameFragment"
+        android:label="fragment_add_game"
+        tools:layout="@layout/fragment_add_game" />
 </navigation>

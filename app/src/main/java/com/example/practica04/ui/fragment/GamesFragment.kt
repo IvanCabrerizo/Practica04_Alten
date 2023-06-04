@@ -75,6 +75,12 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
             }
         }
 
+        gamesFragmentViewModel.getAddGameStart().observe(viewLifecycleOwner) { addGameFragment ->
+            if (addGameFragment) {
+                findNavController().navigate(R.id.action_gamesFragment_to_addGameFragment)
+            }
+        }
+
         gamesFragmentViewModel.getGames()
 
         binding.gamesFragmentBtnIdOrder.setOnClickListener {
@@ -87,6 +93,10 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
             with(gamesFragmentViewModel) {
                 sortGames(GamesFragmentViewModel.SortType.NAME)
             }
+        }
+
+        binding.gamesFragmentBtnAdd.setOnClickListener {
+            gamesFragmentViewModel.addGameFragmentInit()
         }
 
         binding.gamesFragmentBtnPlatformOrder.setOnClickListener {

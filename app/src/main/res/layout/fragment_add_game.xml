@@ -218,9 +218,9 @@
         app:layout_constraintTop_toBottomOf="@id/addGameFragmentInputCover" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/addGameFragmentBtnSave"
         style="@style/addGameFragmentBtnSave"
         android:backgroundTint="@color/green_accept"
-        android:enabled="false"
         app:cornerRadius="@dimen/dp6"
         app:layout_constraintBottom_toBottomOf="@id/addGameFragmentGuideLineHorizontalBottom"
         app:layout_constraintEnd_toEndOf="@id/addGameFragmentGuideLineVerticalEnd"

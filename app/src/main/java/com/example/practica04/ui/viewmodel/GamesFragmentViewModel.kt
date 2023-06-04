@@ -31,10 +31,15 @@ class GamesFragmentViewModel() : ViewModel() {
     }
     private val itemRecyclerSelected = MutableLiveData<GameBo>()
     private val deleteGame = MutableLiveData<GameBo?>(null)
+    private val addGameStart = MutableLiveData<Boolean>(false)
 
     enum class SortType(name: String) {
         ID("ID"),
         NAME("NAME"),
+    }
+
+    fun getAddGameStart(): LiveData<Boolean> {
+        return addGameStart
     }
 
     fun getItemRecyclerSelected(): LiveData<GameBo> {
@@ -131,6 +136,12 @@ class GamesFragmentViewModel() : ViewModel() {
                     sortSelected.value ?: SortType.ID
                 )
             )
+        }
+    }
+
+    fun addGameFragmentInit() {
+        viewModelScope.launch {
+            addGameStart.postValue(true)
         }
     }
 }
