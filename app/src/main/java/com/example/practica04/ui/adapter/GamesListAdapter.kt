@@ -12,6 +12,9 @@ import com.example.practica04.imageUrl
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 import com.example.practica04.model.Pegi
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class GamesListAdapter(private val gameLongClickListener: GameLongClickListener) :
     ListAdapter<GameBo, GamesListAdapter.GameBoViewHolder>(GamesDiffUtilCallBack) {
@@ -37,7 +40,7 @@ class GamesListAdapter(private val gameLongClickListener: GameLongClickListener)
                 gameListItemImgCover.imageUrl(item.cover)
                 gameListItemLabelTitle.text = item.name
                 gameListItemLabelStudio.text = item.studio
-                gameListItemLabelDate.text = item.launchDate.toString()
+                gameListItemLabelDate.text = parseDate(item.launchDate)
 
                 gameListItemImgPlayStation.isVisible =
                     item.compatiblePlatform.contains(CompatiblePlatform.PLAYSTATION)
@@ -72,5 +75,10 @@ class GamesListAdapter(private val gameLongClickListener: GameLongClickListener)
         override fun areContentsTheSame(oldItem: GameBo, newItem: GameBo): Boolean =
             oldItem == newItem
 
+    }
+
+    private fun parseDate(date: Date): String {
+        val dateFormat = SimpleDateFormat("yyyy", Locale.getDefault())
+        return dateFormat.format(date)
     }
 }

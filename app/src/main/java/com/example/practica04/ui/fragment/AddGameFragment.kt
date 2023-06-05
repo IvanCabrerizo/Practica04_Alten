@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.practica04.R
 import com.example.practica04.databinding.FragmentAddGameBinding
+import com.example.practica04.model.Pegi
 import com.example.practica04.ui.viewmodel.AddGameFragmentViewModel
 
 class AddGameFragment : Fragment() {
@@ -32,28 +33,47 @@ class AddGameFragment : Fragment() {
             if (game != null) {
                 addGameFragmentViewModel.addGameRepository()
                 addGameFragmentViewModel.resetNewGame()
-                findNavController().navigate(R.id.action_addGameFragment_to_gamesFragment)
+                findNavController().navigateUp()
             }
         }
 
-        with(addGameFragmentBinding) {
+        addGameFragmentViewModel.getPegi().observe(viewLifecycleOwner) { pegi ->
+            val imageView = addGameFragmentBinding.addGameFragmentBtnPegi
+            when (pegi) {
+                Pegi.PEGI3 -> imageView.setImageResource(R.drawable.pegi3)
+                Pegi.PEGI7 -> imageView.setImageResource(R.drawable.pegi7)
+                Pegi.PEGI12 -> imageView.setImageResource(R.drawable.pegi12)
+                Pegi.PEGI16 -> imageView.setImageResource(R.drawable.pegi16)
+                Pegi.PEGI18 -> imageView.setImageResource(R.drawable.pegi18)
+            }
+        }
 
+        addGameFragmentViewModel.getNintendoSelected().observe(viewLifecycleOwner) {
+            selectButtonBackground(addGameFragmentBinding.addGameFragmentBtnNintendo)
+        }
+
+        addGameFragmentViewModel.getPlayStationSelected().observe(viewLifecycleOwner) {
+            selectButtonBackground(addGameFragmentBinding.addGameFragmentBtnPlayStation)
+        }
+
+        addGameFragmentViewModel.getXboxSelected().observe(viewLifecycleOwner) {
+            selectButtonBackground(addGameFragmentBinding.addGameFragmentBtnXbox)
+        }
+
+        with(addGameFragmentBinding) {
             addGameFragmentBtnPegi.setOnClickListener {
                 findNavController().navigate(R.id.action_addGameFragment_to_gamesPegiAddGameFragmentDialog)
             }
 
             addGameFragmentBtnNintendo.setOnClickListener {
-                selectButtonBackground(addGameFragmentBtnNintendo)
                 addGameFragmentViewModel.setNintendoCompatible()
             }
 
             addGameFragmentBtnPlayStation.setOnClickListener {
-                selectButtonBackground(addGameFragmentBtnPlayStation)
                 addGameFragmentViewModel.setPlayStationCompatible()
             }
 
             addGameFragmentBtnXbox.setOnClickListener {
-                selectButtonBackground(addGameFragmentBtnXbox)
                 addGameFragmentViewModel.setXboxCompatible()
             }
 
@@ -65,6 +85,10 @@ class AddGameFragment : Fragment() {
                     addGameFragmentBinding.addGameFragmentInputDate.editText?.text.toString(),
                     addGameFragmentBinding.addGameFragmentInputCover.editText?.text.toString()
                 )
+            }
+
+            addGameFragmentBtnBack.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
     }

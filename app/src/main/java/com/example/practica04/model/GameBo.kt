@@ -1,5 +1,7 @@
 package com.example.practica04.model
 
+import java.util.Date
+
 enum class CompatiblePlatform(val platform: String) {
     ALL("Todas"),
     PLAYSTATION("PlayStation"),
@@ -30,7 +32,7 @@ data class GameBo(
     val id: Int,
     val name: String,
     val studio: String,
-    val launchDate: Int,
+    val launchDate: Date,
     val compatiblePlatform: List<CompatiblePlatform>,
     val pegi: Pegi,
     val cover: String,

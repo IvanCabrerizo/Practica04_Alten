@@ -12,6 +12,8 @@ import com.example.practica04.model.Pegi
 import kotlinx.coroutines.launch
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class AddGameFragmentViewModel() : ViewModel() {
@@ -21,7 +23,7 @@ class AddGameFragmentViewModel() : ViewModel() {
     private val nintendoSelected = MutableLiveData<Boolean>(false)
     private val playStationSelected = MutableLiveData<Boolean>(false)
     private val xboxSelected = MutableLiveData<Boolean>(false)
-    private val newGame = MutableLiveData<GameBo>()
+    private val newGame = MutableLiveData<GameBo?>()
 
 
     fun getNintendoSelected(): LiveData<Boolean> {
@@ -36,8 +38,12 @@ class AddGameFragmentViewModel() : ViewModel() {
         return xboxSelected
     }
 
-    fun getNewGame(): LiveData<GameBo> {
+    fun getNewGame(): LiveData<GameBo?> {
         return newGame
+    }
+
+    fun getPegi(): LiveData<Pegi> {
+        return pegiSelected
     }
 
     fun setNintendoCompatible() {
@@ -52,6 +58,9 @@ class AddGameFragmentViewModel() : ViewModel() {
         xboxSelected.value = xboxSelected.value != true
     }
 
+    fun setPegi(pegi: Pegi) {
+        pegiSelected.postValue(pegi)
+    }
 
     fun isValidDate(date: String): Boolean {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -65,7 +74,7 @@ class AddGameFragmentViewModel() : ViewModel() {
         }
     }
 
-    fun listCompatible(): List<CompatiblePlatform> {
+    private fun listCompatible(): List<CompatiblePlatform> {
         val compatibleList = mutableListOf<CompatiblePlatform>()
         if (nintendoSelected.value == true) {
             compatibleList.add(CompatiblePlatform.NINTENDO)
@@ -84,7 +93,14 @@ class AddGameFragmentViewModel() : ViewModel() {
         if (name.isEmpty() || studio.isEmpty() || date.isEmpty() || cover.isEmpty()) {
             return null
         }
-        val releaseDate = 1990
+
+        val defaultDate: Date = Calendar.getInstance().apply {
+            set(Calendar.YEAR, 1992)
+            set(Calendar.MONTH, Calendar.OCTOBER)
+            set(Calendar.DAY_OF_MONTH, 10)
+        }.time
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val releaseDate = dateFormat.parse(date)
         val compatiblePlatforms = listCompatible()
         val pegi = pegiSelected.value
 
@@ -92,7 +108,7 @@ class AddGameFragmentViewModel() : ViewModel() {
             0,
             name,
             studio,
-            releaseDate,
+            releaseDate ?: defaultDate,
             compatiblePlatforms,
             pegi ?: Pegi.PEGI16,
             cover
@@ -115,9 +131,5 @@ class AddGameFragmentViewModel() : ViewModel() {
 
     fun resetNewGame() {
         newGame.value = null
-    }
-
-    fun setPegi(pegi: Pegi) {
-        pegiSelected.postValue(pegi)
     }
 }
