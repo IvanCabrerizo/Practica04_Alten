@@ -3,56 +3,55 @@ package com.example.practica04.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.practica04.data.mock.GamesBoMockProvider
+import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 import com.example.practica04.model.Pegi
+import kotlinx.coroutines.launch
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class AddGameFragmentViewModel() : ViewModel() {
 
-    private val name = MutableLiveData<String>()
-    private val studio = MutableLiveData<String>()
-    private val date = MutableLiveData<String>()
-    private val cover = MutableLiveData<String>()
-    private val saveGameValid = MutableLiveData<Boolean>(false)
+    private val repository: GamesRepository by lazy { GamesRepository(GamesBoMockProvider) }
+    private val pegiSelected = MutableLiveData<Pegi>()
+    private val nintendoSelected = MutableLiveData<Boolean>(false)
+    private val playStationSelected = MutableLiveData<Boolean>(false)
+    private val xboxSelected = MutableLiveData<Boolean>(false)
+    private val newGame = MutableLiveData<GameBo>()
 
-    fun getName(): LiveData<String> {
-        return name
+
+    fun getNintendoSelected(): LiveData<Boolean> {
+        return nintendoSelected
     }
 
-    fun getStudio(): LiveData<String> {
-        return studio
+    fun getPlayStationSelected(): LiveData<Boolean> {
+        return playStationSelected
     }
 
-    fun getDate(): LiveData<String> {
-        return date
+    fun getXboxSelected(): LiveData<Boolean> {
+        return xboxSelected
     }
 
-    fun getCover(): LiveData<String> {
-        return cover
+    fun getNewGame(): LiveData<GameBo> {
+        return newGame
     }
 
-    fun getSaveGameValid(): LiveData<Boolean> {
-        return saveGameValid
+    fun setNintendoCompatible() {
+        nintendoSelected.value = nintendoSelected.value != true
     }
 
-    fun setName(nameIn: String) {
-        name.postValue(nameIn)
+    fun setPlayStationCompatible() {
+        playStationSelected.value = playStationSelected.value != true
     }
 
-    fun setStudio(studioIn: String) {
-        studio.postValue(studioIn)
+    fun setXboxCompatible() {
+        xboxSelected.value = xboxSelected.value != true
     }
 
-    fun setDate(dateIn: String) {
-        date.postValue(dateIn)
-    }
-
-    fun setCover(coverIn: String) {
-        cover.postValue(coverIn)
-    }
 
     fun isValidDate(date: String): Boolean {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -66,29 +65,59 @@ class AddGameFragmentViewModel() : ViewModel() {
         }
     }
 
-    fun generateGame(): GameBo? {
-        val nameValue = name.value
-        val studioValue = studio.value
-        val dateValue = date.value
-        val coverValue = cover.value
-
-
-        if (nameValue.isNullOrEmpty() || studioValue.isNullOrEmpty() ||
-            dateValue.isNullOrEmpty() || coverValue.isNullOrEmpty()
-        ) {
-            return null
+    fun listCompatible(): List<CompatiblePlatform> {
+        val compatibleList = mutableListOf<CompatiblePlatform>()
+        if (nintendoSelected.value == true) {
+            compatibleList.add(CompatiblePlatform.NINTENDO)
         }
 
-        val launchDate = try {
-            dateValue.toInt()
-        } catch (e: NumberFormatException) {
+        if (playStationSelected.value == true) {
+            compatibleList.add(CompatiblePlatform.PLAYSTATION)
+        }
+        if (xboxSelected.value == true) {
+            compatibleList.add(CompatiblePlatform.XBOX)
+        }
+        return compatibleList
+    }
+
+    fun generateGame(name: String, studio: String, date: String, cover: String): GameBo? {
+        if (name.isEmpty() || studio.isEmpty() || date.isEmpty() || cover.isEmpty()) {
             return null
         }
+        val releaseDate = 1990
+        val compatiblePlatforms = listCompatible()
+        val pegi = pegiSelected.value
 
-        val compatiblePlatforms = listOf(CompatiblePlatform.ALL)
+        val gameGenerated = GameBo(
+            0,
+            name,
+            studio,
+            releaseDate,
+            compatiblePlatforms,
+            pegi ?: Pegi.PEGI16,
+            cover
+        )
 
-        val pegi = Pegi.PEGI3
+        updateNewGame(gameGenerated)
 
-        return GameBo(0, nameValue, studioValue, launchDate, compatiblePlatforms, pegi, coverValue)
+        return gameGenerated
+    }
+
+    private fun updateNewGame(game: GameBo) {
+        newGame.value = game
+    }
+
+    fun addGameRepository() {
+        viewModelScope.launch {
+            newGame.value?.let { repository.addGame(it) }
+        }
+    }
+
+    fun resetNewGame() {
+        newGame.value = null
+    }
+
+    fun setPegi(pegi: Pegi) {
+        pegiSelected.postValue(pegi)
     }
 }

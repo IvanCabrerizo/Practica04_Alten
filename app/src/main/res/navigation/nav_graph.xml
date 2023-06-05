@@ -47,5 +47,17 @@
         android:id="@+id/addGameFragment"
         android:name="com.example.practica04.ui.fragment.AddGameFragment"
         android:label="fragment_add_game"
-        tools:layout="@layout/fragment_add_game" />
+        tools:layout="@layout/fragment_add_game">
+        <action
+            android:id="@+id/action_addGameFragment_to_gamesPegiAddGameFragmentDialog"
+            app:destination="@id/gamesPegiAddGameFragmentDialog" />
+        <action
+            android:id="@+id/action_addGameFragment_to_gamesFragment"
+            app:destination="@id/gamesFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/gamesPegiAddGameFragmentDialog"
+        android:name="com.example.practica04.ui.fragment.GamesPegiAddGameFragmentDialog"
+        android:label="GamesPegiAddGameFragmentDialog"
+        tools:layout="@layout/custom_pegi_dialog" />
 </navigation>

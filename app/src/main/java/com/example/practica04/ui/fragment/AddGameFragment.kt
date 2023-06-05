@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.practica04.R
 import com.example.practica04.databinding.FragmentAddGameBinding
 import com.example.practica04.ui.viewmodel.AddGameFragmentViewModel
@@ -13,7 +16,7 @@ import com.example.practica04.ui.viewmodel.AddGameFragmentViewModel
 class AddGameFragment : Fragment() {
 
     private val addGameFragmentBinding by lazy { FragmentAddGameBinding.inflate(layoutInflater) }
-    private val addGameFragmentViewModel: AddGameFragmentViewModel by viewModels()
+    private val addGameFragmentViewModel: AddGameFragmentViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,34 +28,53 @@ class AddGameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*        addGameFragmentViewModel.getName().observe(viewLifecycleOwner) {
-                    addGameFragmentViewModel.setName(addGameFragmentBinding.addGameFragmentInputName.editText?.text.toString())
-                }
+        addGameFragmentViewModel.getNewGame().observe(viewLifecycleOwner) { game ->
+            if (game != null) {
+                addGameFragmentViewModel.addGameRepository()
+                addGameFragmentViewModel.resetNewGame()
+                findNavController().navigate(R.id.action_addGameFragment_to_gamesFragment)
+            }
+        }
 
-                addGameFragmentViewModel.getStudio().observe(viewLifecycleOwner) {
-                    addGameFragmentViewModel.setStudio(addGameFragmentBinding.addGameFragmentInputStudio.editText?.text.toString())
-                }
+        with(addGameFragmentBinding) {
 
-                addGameFragmentViewModel.getDate().observe(viewLifecycleOwner) {
-                    addGameFragmentViewModel.setDate(addGameFragmentBinding.addGameFragmentInputDate.editText?.text.toString())
-                }
+            addGameFragmentBtnPegi.setOnClickListener {
+                findNavController().navigate(R.id.action_addGameFragment_to_gamesPegiAddGameFragmentDialog)
+            }
 
-                addGameFragmentViewModel.getCover().observe(viewLifecycleOwner) {
-                    addGameFragmentViewModel.setCover(addGameFragmentBinding.addGameFragmentInputCover.editText?.text.toString())
-                }*/
+            addGameFragmentBtnNintendo.setOnClickListener {
+                selectButtonBackground(addGameFragmentBtnNintendo)
+                addGameFragmentViewModel.setNintendoCompatible()
+            }
 
-        addGameFragmentBinding.addGameFragmentBtnSave.setOnClickListener {
-            validateGameData()
-            addGameFragmentViewModel.generateGame()
+            addGameFragmentBtnPlayStation.setOnClickListener {
+                selectButtonBackground(addGameFragmentBtnPlayStation)
+                addGameFragmentViewModel.setPlayStationCompatible()
+            }
+
+            addGameFragmentBtnXbox.setOnClickListener {
+                selectButtonBackground(addGameFragmentBtnXbox)
+                addGameFragmentViewModel.setXboxCompatible()
+            }
+
+            addGameFragmentBtnSave.setOnClickListener {
+                validateGameData()
+                addGameFragmentViewModel.generateGame(
+                    addGameFragmentBinding.addGameFragmentInputName.editText?.text.toString(),
+                    addGameFragmentBinding.addGameFragmentInputStudio.editText?.text.toString(),
+                    addGameFragmentBinding.addGameFragmentInputDate.editText?.text.toString(),
+                    addGameFragmentBinding.addGameFragmentInputCover.editText?.text.toString()
+                )
+            }
         }
     }
 
     private fun validateGameData() {
-
         val name = addGameFragmentBinding.addGameFragmentInputName.editText?.text.toString()
         val studio = addGameFragmentBinding.addGameFragmentInputStudio.editText?.text.toString()
         val date = addGameFragmentBinding.addGameFragmentInputDate.editText?.text.toString()
         val cover = addGameFragmentBinding.addGameFragmentInputCover.editText?.text.toString()
+
         if (name.isEmpty()) {
             addGameFragmentBinding.addGameFragmentInputName.error =
                 getString(R.string.addGameFragmentNameError)
@@ -83,10 +105,14 @@ class AddGameFragment : Fragment() {
         } else {
             addGameFragmentBinding.addGameFragmentInputCover.error = null
         }
+    }
 
-        addGameFragmentViewModel.setName(name)
-        addGameFragmentViewModel.setStudio(studio)
-        addGameFragmentViewModel.setDate(date)
-        addGameFragmentViewModel.setCover(cover)
+    private fun selectButtonBackground(button: ImageView) {
+        if (button.background == null) {
+            button.background =
+                ContextCompat.getDrawable(button.context, R.drawable.selected_button_backgroun)
+        } else {
+            button.background = null
+        }
     }
 }

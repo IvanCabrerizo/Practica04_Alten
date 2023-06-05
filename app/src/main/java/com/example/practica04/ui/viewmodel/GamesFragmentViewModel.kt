@@ -144,4 +144,8 @@ class GamesFragmentViewModel() : ViewModel() {
             addGameStart.postValue(true)
         }
     }
+
+    fun resetNavigate(){
+        addGameStart.value = false
+    }
 }

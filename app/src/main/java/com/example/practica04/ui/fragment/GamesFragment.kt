@@ -78,6 +78,7 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
         gamesFragmentViewModel.getAddGameStart().observe(viewLifecycleOwner) { addGameFragment ->
             if (addGameFragment) {
                 findNavController().navigate(R.id.action_gamesFragment_to_addGameFragment)
+                gamesFragmentViewModel.resetNavigate()
             }
         }
 
