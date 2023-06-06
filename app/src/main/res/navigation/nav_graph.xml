@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_gamesFragment_to_addGameFragment"
             app:destination="@id/addGameFragment" />
+        <action
+            android:id="@+id/action_gamesFragment_to_gamesByStudioFragment"
+            app:destination="@id/gamesByStudioFragment" />
     </fragment>
 
     <dialog
@@ -60,4 +63,13 @@
         android:name="com.example.practica04.ui.fragment.GamesPegiAddGameFragmentDialog"
         android:label="GamesPegiAddGameFragmentDialog"
         tools:layout="@layout/custom_pegi_dialog" />
+    <fragment
+        android:id="@+id/gamesByStudioFragment"
+        android:name="com.example.practica04.ui.fragment.GamesByStudioFragment"
+        android:label="fragment_games_by_studio"
+        tools:layout="@layout/fragment_games_by_studio">
+        <argument
+            android:name="studioName"
+            app:argType="string" />
+    </fragment>
 </navigation>

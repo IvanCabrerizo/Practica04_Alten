@@ -3,7 +3,6 @@ package com.example.practica04.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,17 +12,12 @@ import com.example.practica04.imageUrl
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 import com.example.practica04.model.Pegi
-import com.example.practica04.ui.fragment.GamesFragmentDirections
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class GamesListAdapter(private val gameLongClickListener: GameLongClickListener) :
-    ListAdapter<GameBo, GamesListAdapter.GameBoViewHolder>(GamesDiffUtilCallBack) {
-
-    interface GameLongClickListener {
-        fun gameLongClick(game: GameBo)
-    }
+class GameByStudioListAdapter() :
+    ListAdapter<GameBo, GameByStudioListAdapter.GameBoViewHolder>(GamesDiffUtilCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameBoViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -31,7 +25,7 @@ class GamesListAdapter(private val gameLongClickListener: GameLongClickListener)
         return GameBoViewHolder(gamesListItemBinding)
     }
 
-    override fun onBindViewHolder(holder: GamesListAdapter.GameBoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GameByStudioListAdapter.GameBoViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
@@ -61,18 +55,6 @@ class GamesListAdapter(private val gameLongClickListener: GameLongClickListener)
                         Pegi.PEGI18 -> R.drawable.pegi18
                     }
                 )
-
-                itemView.setOnLongClickListener {
-                    gameLongClickListener.gameLongClick(item)
-                    true
-                }
-
-                gameListItemLabelStudio.setOnClickListener {
-                    val action =
-                        GamesFragmentDirections.actionGamesFragmentToGamesByStudioFragment(item.studio)
-                    val navController = Navigation.findNavController(itemView)
-                    navController.navigate(action)
-                }
             }
         }
     }

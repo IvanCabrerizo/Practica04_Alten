@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.GamesByStudioFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/gamesFragmentAppBarLayout"
+        style="@style/gamesFragmentAppBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/gamesFragmentToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/gamesFragmentLabelTitle"
+                    style="@style/gamesFragmentListLabelTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/gamesFragmentListGames"
+        style="@style/gamesFragmentList"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintBottom_toTopOf="@id/gamesFragmentBottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gamesFragmentAppBarLayout" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/gamesFragmentBtnAdd"
+        style="@style/gamesFragmentBtnAdd"
+        android:contentDescription="@string/gamesFragmentBtnAddDescription"
+        android:src="@drawable/add_floating_btn_icon"
+        app:layout_constraintBottom_toTopOf="@id/gamesFragmentBottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/gamesFragmentBottomNavigation"
+        style="@style/gamesFragmentBottomNavigation"
+        android:background="@color/md_theme_dark_inverseOnSurface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/gamesFragmentBtnGamesList"
+                style="@style/gamesFragmentImgBtnBottomNavigation"
+                android:layout_marginStart="@dimen/dp26"
+                android:background="@null"
+                android:contentDescription="@string/gamesFragmentBtnAlphabetOrderDescription"
+                android:src="@drawable/games_list_navigation_icon" />
+
+
+            <ImageButton
+                android:id="@+id/gamesFragmentBtnUserPreferences"
+                style="@style/gamesFragmentImgBtnBottomNavigation"
+                android:layout_marginEnd="@dimen/dp26"
+                android:background="@null"
+                android:contentDescription="@string/gamesFragmentBtnPlatformOrderDescription"
+                android:src="@drawable/profile_preferences_icon" />
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
