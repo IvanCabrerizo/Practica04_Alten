@@ -38,6 +38,10 @@ class GamesFragmentViewModel() : ViewModel() {
         NAME("NAME"),
     }
 
+    fun getGameList(): LiveData<List<GameBo>> {
+        return gamesList
+    }
+
     fun getAddGameStart(): LiveData<Boolean> {
         return addGameStart
     }
@@ -145,7 +149,7 @@ class GamesFragmentViewModel() : ViewModel() {
         }
     }
 
-    fun resetNavigate(){
+    fun resetNavigate() {
         addGameStart.value = false
     }
 }

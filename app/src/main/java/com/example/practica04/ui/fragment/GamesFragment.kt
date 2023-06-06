@@ -41,7 +41,7 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
             adapter = gamesAdapter
         }
 
-        gamesFragmentViewModel.gamesList.observe(viewLifecycleOwner) { gameList ->
+        gamesFragmentViewModel.getGameList().observe(viewLifecycleOwner) { gameList ->
             binding.gamesFragmentListGames.scrollToPosition(0)
             gamesAdapter.submitList(gameList)
         }
@@ -111,8 +111,9 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
     }
 
     fun snackBarRestoreGame(game: GameBo) {
-        val snackbar = Snackbar.make(requireView(), "Juego eliminado", Snackbar.LENGTH_LONG)
-        snackbar.setAction("Deshacer") {
+        val snackbar =
+            Snackbar.make(requireView(), getString(R.string.deleted_game), Snackbar.LENGTH_LONG)
+        snackbar.setAction(getString(R.string.undo_text)) {
             gamesFragmentViewModel.addGame(game)
         }
         snackbar.show()

@@ -36,4 +36,7 @@
     <string name="addGameFragmentDateErrorEmpty">Ingrese una fecha</string>
     <string name="addGameFragmentDateErrorFormat">Formato de fecha incorrecto (dd/mm/yyyy)</string>
     <string name="addGameFragmentCoverError">Ingrese una cubierta</string>
+    <string name="delete_confirmation_message">Estas seguro de que quieres eliminar %s</string>
+    <string name="deleted_game">Juego eliminado</string>
+    <string name="undo_text">Deshacer</string>
 </resources>

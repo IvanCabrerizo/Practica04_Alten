@@ -26,7 +26,8 @@ class GamesDeleteFragmentDialog : DialogFragment() {
                 dismiss()
             }
 
-            deleteDialogLabelConfirmation.text = "¿Estas seguro de que quieres eliminar $gameName?"
+            deleteDialogLabelConfirmation.text =
+                getString(R.string.delete_confirmation_message, gameName)
 
             orderDialogBtnAccept.setOnClickListener {
                 gamesFragmentViewModel.deleteGame()
