@@ -24,7 +24,6 @@ class AddGameFragmentViewModel() : ViewModel() {
     private val xboxSelected = MutableLiveData<Boolean>(false)
     private val newGame = MutableLiveData<GameBo?>()
 
-
     fun getNintendoSelected(): LiveData<Boolean> {
         return nintendoSelected
     }
@@ -99,7 +98,11 @@ class AddGameFragmentViewModel() : ViewModel() {
             set(Calendar.DAY_OF_MONTH, 10)
         }.time
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val releaseDate = dateFormat.parse(date)
+        val releaseDate: Date? = try {
+            dateFormat.parse(date)
+        } catch (e: ParseException) {
+             return null
+        }
         val compatiblePlatforms = listCompatible()
         val pegi = pegiSelected.value
 

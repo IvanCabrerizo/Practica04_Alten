@@ -66,11 +66,11 @@ object GamesRepository {
         }
     }
 
-    private fun getFilterDataStore(): Flow<String> {
+    fun getFilterDataStore(): Flow<String> {
         return dataStore.getFilterSelected()
     }
 
-    private fun getSortDataStore(): Flow<String> {
+    fun getSortDataStore(): Flow<String> {
         return dataStore.getSortSelected()
     }
 
