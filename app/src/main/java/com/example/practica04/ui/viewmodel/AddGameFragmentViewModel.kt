@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practica04.data.mock.GamesBoMockProvider
 import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
@@ -18,7 +17,7 @@ import java.util.Locale
 
 class AddGameFragmentViewModel() : ViewModel() {
 
-    private val repository: GamesRepository by lazy { GamesRepository(GamesBoMockProvider) }
+    private val repository: GamesRepository by lazy { GamesRepository }
     private val pegiSelected = MutableLiveData<Pegi>()
     private val nintendoSelected = MutableLiveData<Boolean>(false)
     private val playStationSelected = MutableLiveData<Boolean>(false)

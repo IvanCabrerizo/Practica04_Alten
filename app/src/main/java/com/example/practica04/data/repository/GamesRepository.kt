@@ -1,5 +1,6 @@
 package com.example.practica04.data.repository
 
+import android.content.Context
 import com.example.practica04.data.mock.GamesBoMockProvider
 import com.example.practica04.data.preference.UserPreferencesProvider
 import com.example.practica04.model.CompatiblePlatform
@@ -7,10 +8,14 @@ import com.example.practica04.model.GameBo
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 import kotlinx.coroutines.flow.Flow
 
-class GamesRepository(
-    private val gameBoMock: GamesBoMockProvider,
-    private val dataStore: UserPreferencesProvider,
-) {
+object GamesRepository {
+
+    private val gameBoMock = GamesBoMockProvider
+    private lateinit var dataStore: UserPreferencesProvider
+
+    fun initializeGamesRepository(context: Context) {
+        dataStore = UserPreferencesProvider(context)
+    }
 
     suspend fun getGames(): List<GameBo> {
         return gameBoMock.gameList.sortedBy { it.id }

@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.practica04.data.mock.GamesBoMockProvider
 import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
@@ -13,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class GamesFragmentViewModel() : ViewModel() {
 
-    private val repository: GamesRepository by lazy { GamesRepository(GamesBoMockProvider) }
+    private val repository: GamesRepository by lazy { GamesRepository }
     private val gamesList = MutableLiveData<List<GameBo>>()
     val selectFilter: MutableLiveData<CompatiblePlatform> =
         MutableLiveData<CompatiblePlatform>().apply {
@@ -32,6 +31,8 @@ class GamesFragmentViewModel() : ViewModel() {
     private val itemRecyclerSelected = MutableLiveData<GameBo>()
     private val deleteGame = MutableLiveData<GameBo?>(null)
     private val addGameStart = MutableLiveData<Boolean>(false)
+
+
 
     enum class SortType(name: String) {
         ID("ID"),
