@@ -17,9 +17,9 @@ class GamesByStudioFragmentViewModel : ViewModel() {
         return gamesList
     }
 
-    fun getGames() {
+    fun getGames(studio: String) {
         viewModelScope.launch {
-            gamesList.postValue(repository.getGames())
+            gamesList.postValue(repository.getGamesByStudio(studio))
         }
     }
 }

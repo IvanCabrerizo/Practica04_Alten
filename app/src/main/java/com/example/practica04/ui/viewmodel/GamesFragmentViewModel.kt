@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class GamesFragmentViewModel() : ViewModel() {
 
     private val repository: GamesRepository by lazy { GamesRepository(GamesBoMockProvider) }
-    val gamesList = MutableLiveData<List<GameBo>>()
+    private val gamesList = MutableLiveData<List<GameBo>>()
     val selectFilter: MutableLiveData<CompatiblePlatform> =
         MutableLiveData<CompatiblePlatform>().apply {
             value = CompatiblePlatform.ALL

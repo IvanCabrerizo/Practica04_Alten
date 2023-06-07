@@ -1,11 +1,16 @@
 package com.example.practica04.data.repository
 
 import com.example.practica04.data.mock.GamesBoMockProvider
+import com.example.practica04.data.preference.UserPreferencesProvider
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
+import kotlinx.coroutines.flow.Flow
 
-class GamesRepository(private val gameBoMock: GamesBoMockProvider) {
+class GamesRepository(
+    private val gameBoMock: GamesBoMockProvider,
+    private val dataStore: UserPreferencesProvider,
+) {
 
     suspend fun getGames(): List<GameBo> {
         return gameBoMock.gameList.sortedBy { it.id }
@@ -42,18 +47,33 @@ class GamesRepository(private val gameBoMock: GamesBoMockProvider) {
         return gameBoMock.gameList
     }
 
+    suspend fun getGamesByStudio(studio: String): List<GameBo> {
+        val filteredList = gameBoMock.gameList.filter { game ->
+            studio in game.studio
+        }
+        return sortList(GamesFragmentViewModel.SortType.ID, filteredList)
+    }
+
     private fun sortList(sort: GamesFragmentViewModel.SortType, list: List<GameBo>): List<GameBo> {
         return when (sort) {
             GamesFragmentViewModel.SortType.ID -> list.sortedBy { it.id }
             GamesFragmentViewModel.SortType.NAME -> list.sortedBy { it.name }
         }
     }
-}
 
-/*
-class GamesRepository(private val gameDatabase: GamesDataBase) {
-
-    suspend fun getGames(sort: Boolean): List<GameBo> {
-        return gameDataBase.gamesDao().getAllSorted(sort)
+    private fun getFilterDataStore(): Flow<String> {
+        return dataStore.getFilterSelected()
     }
-}*/
+
+    private fun getSortDataStore(): Flow<String> {
+        return dataStore.getSortSelected()
+    }
+
+    suspend fun updateFilterDataStore(filter: String) {
+        dataStore.updateFilterSelected(filter)
+    }
+
+    suspend fun updateSortDataStore(sort: String) {
+        dataStore.updateSortSelected(sort)
+    }
+}

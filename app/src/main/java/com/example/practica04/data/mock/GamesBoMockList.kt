@@ -11,7 +11,7 @@ object GamesBoMockProvider {
         GameBo(
             2,
             "Zelda Breath of the wild",
-            "Nintendo",
+            "Monolith Soft",
             createDate(2017, 6, 3),
             listOf(CompatiblePlatform.NINTENDO),
             Pegi.PEGI16,
@@ -25,6 +25,15 @@ object GamesBoMockProvider {
             listOf(CompatiblePlatform.NINTENDO),
             Pegi.PEGI7,
             "https://static.wikia.nocookie.net/espokemon/images/9/95/Pok%C3%A9mon_Amarillo.png"
+        ),
+        GameBo(
+            7,
+            "Pokemon Oro",
+            "GameFreak",
+            createDate(1999, 3, 22),
+            listOf(CompatiblePlatform.NINTENDO),
+            Pegi.PEGI7,
+            "https://static.wikia.nocookie.net/espokemon/images/6/6b/Pokemon_Edici%C3%B3n_Oro.jpg"
         ),
         GameBo(
             5,
@@ -65,7 +74,7 @@ object GamesBoMockProvider {
         GameBo(
             4,
             "Crash Team Racing",
-            "Nintendo",
+            "Beenox",
             createDate(2019, 1, 6),
             listOf(
                 CompatiblePlatform.PLAYSTATION,

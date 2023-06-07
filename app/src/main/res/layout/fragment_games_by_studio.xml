@@ -22,9 +22,20 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical">
 
+                <ImageButton
+                    android:id="@+id/gamesByStudioFragmentBtnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp4"
+                    android:background="@null"
+                    android:contentDescription="@string/addGameFragmentBtnBack_content_description"
+                    android:src="@drawable/back_btn_icon"
+                    app:layout_constraintStart_toStartOf="@id/addGameFragmentGuideLineVerticalStart"
+                    app:layout_constraintTop_toTopOf="@id/addGameFragmentGuideLineHorizontalTop" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/gamesFragmentLabelTitle"
-                    style="@style/gamesFragmentListLabelTitleText"
+                    style="@style/gamesFragmentByStudioListLabelTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -38,14 +49,6 @@
         app:layout_constraintBottom_toTopOf="@id/gamesFragmentBottomNavigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/gamesFragmentAppBarLayout" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/gamesFragmentBtnAdd"
-        style="@style/gamesFragmentBtnAdd"
-        android:contentDescription="@string/gamesFragmentBtnAddDescription"
-        android:src="@drawable/add_floating_btn_icon"
-        app:layout_constraintBottom_toTopOf="@id/gamesFragmentBottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/gamesFragmentBottomNavigation"

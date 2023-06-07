@@ -39,6 +39,14 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="gamesFragmentByStudioListLabelTitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/gamesToolbarListTitle</item>
+        <item name="android:textSize">@dimen/sp36</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="gamesFragmentImgBtnToolbar">
         <item name="android:layout_width">@dimen/dp36</item>
         <item name="android:layout_height">@dimen/dp36</item>
@@ -218,4 +226,5 @@
     </style>
 
     <string name="addGameFragmentBtnSave">Guardar</string>
+    <dimen name="sp36">36sp</dimen>
 </resources>
