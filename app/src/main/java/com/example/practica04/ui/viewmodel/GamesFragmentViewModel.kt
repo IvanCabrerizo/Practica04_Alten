@@ -1,6 +1,5 @@
 package com.example.practica04.ui.viewmodel
 
-import android.util.Log
 import android.widget.Button
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,13 +8,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.practica04.data.repository.GamesRepository
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class GamesFragmentViewModel() : ViewModel() {
 
     private val repository: GamesRepository by lazy { GamesRepository }
     private val gamesList = MutableLiveData<List<GameBo>>()
-    val selectFilter = MutableLiveData<CompatiblePlatform>(CompatiblePlatform.ALL)
+    val selectFilter = MutableLiveData<CompatiblePlatform>(null)
     val sortSelected = MutableLiveData<SortType>(SortType.ID)
     val previousSelectedFilter = MutableLiveData<Button>(null)
     val selectFilterButton = MutableLiveData<Button>()
@@ -28,7 +28,6 @@ class GamesFragmentViewModel() : ViewModel() {
 
     init {
         observeFilterAndSort()
-        Log.i("MANOLO", filterSavedPreference.toString())
     }
 
     enum class SortType(name: String) {
@@ -90,13 +89,13 @@ class GamesFragmentViewModel() : ViewModel() {
 
     fun filterGames(filter: CompatiblePlatform) {
         viewModelScope.launch {
-            repository.updateFilterDataStore(filter.platform)
             gamesList.postValue(
                 repository.getGamesFiltered(
                     filter,
                     sortSelected.value ?: SortType.ID
                 )
             )
+            repository.updateFilterDataStore(filter.platform)
         }
     }
 
@@ -156,6 +155,7 @@ class GamesFragmentViewModel() : ViewModel() {
 
     private fun observeFilterAndSort() {
         viewModelScope.launch {
+            delay(100)
             filterSavedPreference.collect { filter ->
                 val filterSaved = when (filter) {
                     CompatiblePlatform.PLAYSTATION.platform -> CompatiblePlatform.PLAYSTATION
