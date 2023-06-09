@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.UserPreferenceFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/gamesFragmentAppBarLayout"
+        style="@style/gamesFragmentAppBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/gamesFragmentToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/gamesFragmentLabelTitle"
+                    style="@style/userPreferenceFragmentLabelTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/userPreferenceFragmentLabelFilterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gamesFragmentAppBarLayout"
+        tools:text="HOLA MANOLO" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/userPreferenceFragmentLabelFilterSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPreferenceFragmentLabelFilterTitle"
+        tools:text="HOLA MANOLO" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/userPreferenceFragmentLabelSortTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPreferenceFragmentLabelFilterSelected"
+        tools:text="HOLA MANOLO" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/userPreferenceFragmentLabelSortSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userPreferenceFragmentLabelSortTitle"
+        tools:text="HOLA MANOLO" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/gamesFragmentBtnAdd"
+        style="@style/gamesFragmentBtnAdd"
+        android:contentDescription="@string/gamesFragmentBtnAddDescription"
+        android:src="@drawable/add_floating_btn_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

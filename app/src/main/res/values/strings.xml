@@ -41,4 +41,5 @@
     <string name="undo_text">Deshacer</string>
     <string name="argument_studioname">studioName</string>
     <string name="not_found">Not Found</string>
+    <string name="userPreferencesFragmentLabelTitle">Preferencias</string>
 </resources>

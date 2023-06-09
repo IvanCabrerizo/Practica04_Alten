@@ -1,12 +1,14 @@
 package com.example.practica04.data.repository
 
 import android.content.Context
+import android.util.Log
 import com.example.practica04.data.mock.GamesBoMockProvider
 import com.example.practica04.data.preference.UserPreferencesProvider
 import com.example.practica04.model.CompatiblePlatform
 import com.example.practica04.model.GameBo
 import com.example.practica04.ui.viewmodel.GamesFragmentViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 object GamesRepository {
 
@@ -25,8 +27,11 @@ object GamesRepository {
         platform: CompatiblePlatform, sort: GamesFragmentViewModel.SortType
     ): List<GameBo> {
         return if (platform == CompatiblePlatform.ALL) {
+            updateFilterDataStore(CompatiblePlatform.ALL.platform)
             sortList(sort, gameBoMock.gameList)
         } else {
+            Log.i("MANOLO", "Valor repository filter: ${platform.platform}")
+            updateFilterDataStore(platform.platform)
             val filteredList = gameBoMock.gameList.filter { game ->
                 platform in game.compatiblePlatform
             }
@@ -35,6 +40,8 @@ object GamesRepository {
     }
 
     suspend fun getGamesSorted(sort: GamesFragmentViewModel.SortType): List<GameBo> {
+        Log.i("MANOLO", "Valor repository filter: ${sort.name}")
+        updateSortDataStore(sort.name)
         return sortList(sort, gameBoMock.gameList)
     }
 
@@ -66,19 +73,32 @@ object GamesRepository {
         }
     }
 
-    fun getFilterDataStore(): Flow<String> {
-        return dataStore.getFilterSelected()
+    fun getSort(): Flow<GamesFragmentViewModel.SortType> {
+        return dataStore.getSortSelected().map { sort ->
+            when (sort) {
+                GamesFragmentViewModel.SortType.ID.name -> GamesFragmentViewModel.SortType.ID
+                GamesFragmentViewModel.SortType.NAME.name -> GamesFragmentViewModel.SortType.NAME
+                else -> GamesFragmentViewModel.SortType.ID
+            }
+        }
     }
 
-    fun getSortDataStore(): Flow<String> {
-        return dataStore.getSortSelected()
+    fun getFilter(): Flow<CompatiblePlatform> {
+        return dataStore.getFilterSelected().map { filter ->
+            when (filter) {
+                CompatiblePlatform.PLAYSTATION.platform -> CompatiblePlatform.PLAYSTATION
+                CompatiblePlatform.XBOX.platform -> CompatiblePlatform.XBOX
+                CompatiblePlatform.NINTENDO.platform -> CompatiblePlatform.NINTENDO
+                else -> CompatiblePlatform.ALL
+            }
+        }
     }
 
-    suspend fun updateFilterDataStore(filter: String) {
+    private suspend fun updateFilterDataStore(filter: String) {
         dataStore.updateFilterSelected(filter)
     }
 
-    suspend fun updateSortDataStore(sort: String) {
+    private suspend fun updateSortDataStore(sort: String) {
         dataStore.updateSortSelected(sort)
     }
 }

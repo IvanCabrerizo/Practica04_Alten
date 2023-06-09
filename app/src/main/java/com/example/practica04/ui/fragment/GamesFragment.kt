@@ -82,7 +82,7 @@ class GamesFragment : Fragment(), GamesListAdapter.GameLongClickListener {
             }
         }
 
-        gamesFragmentViewModel.getGames()
+//        gamesFragmentViewModel.getGames()
 
         binding.gamesFragmentBtnIdOrder.setOnClickListener {
             with(gamesFragmentViewModel) {

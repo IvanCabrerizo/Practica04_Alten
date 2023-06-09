@@ -39,6 +39,14 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="userPreferenceFragmentLabelTitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/userPreferencesFragmentLabelTitle</item>
+        <item name="android:textSize">@dimen/sp32</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="gamesFragmentByStudioListLabelTitleText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
